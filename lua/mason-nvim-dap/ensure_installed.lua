@@ -1,11 +1,10 @@
 local settings = require('mason-nvim-dap.settings')
+local registry = require('mason-registry')
+local Optional = require('mason-core.optional')
+local source_mappings = require('mason-nvim-dap.mappings.source')
 
 ---@param nvim_dap_adapter_name string
 local function resolve_package(nvim_dap_adapter_name)
-	local registry = require('mason-registry')
-	local Optional = require('mason-core.optional')
-	local source_mappings = require('mason-nvim-dap.mappings.source')
-
 	return Optional.of_nilable(source_mappings.nvim_dap_to_package[nvim_dap_adapter_name]):map(function(package_name)
 		local ok, pkg = pcall(registry.get_package, package_name)
 		if ok then
@@ -15,9 +14,8 @@ local function resolve_package(nvim_dap_adapter_name)
 end
 
 return function()
+	local Package = require('mason-core.package')
 	for _, source_identifier in ipairs(settings.current.ensure_installed) do
-		local Package = require('mason-core.package')
-
 		local source_name, version = Package.Parse(source_identifier)
 		resolve_package(source_name):if_present(
 			-- -@param pkg Package
@@ -38,4 +36,6 @@ return function()
 			end
 		)
 	end
+	local auto_setup = require('mason-nvim-dap.automatic_setup')
+	auto_setup()
 end

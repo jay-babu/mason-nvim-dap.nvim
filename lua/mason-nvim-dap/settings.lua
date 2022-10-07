@@ -15,6 +15,8 @@ local DEFAULT_SETTINGS = {
 	--   - { exclude: string[] }: All servers set up via mason-nvim-dap, except the ones provided in the list, are automatically installed.
 	--       Example: automatic_installation = { exclude = { "python", "delve" } }
 	automatic_installation = false,
+
+	automatic_setup = false,
 }
 
 M._DEFAULT_SETTINGS = DEFAULT_SETTINGS
@@ -22,10 +24,13 @@ M.current = M._DEFAULT_SETTINGS
 
 ---@param opts MasonNvimDapSettings
 function M.set(opts)
+	opts.automatic_setup = opts.automatic_setup and {}
+
 	M.current = vim.tbl_deep_extend('force', M.current, opts)
 	vim.validate({
 		ensure_installed = { M.current.ensure_installed, 'table', true },
 		automatic_installation = { M.current.automatic_installation, { 'boolean', 'table' }, true },
+		automatic_setup = { M.current.automatic_setup, { 'boolean', 'table' }, true },
 	})
 end
 
