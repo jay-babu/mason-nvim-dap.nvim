@@ -1,13 +1,7 @@
 local settings = require('mason-nvim-dap.settings')
 local Optional = require('mason-core.optional')
 
-local allowed = settings.current.automatic_setup == true
-
 return function()
-	if not allowed then
-		return
-	end
-
 	local adapters = require('mason-nvim-dap.mappings.adapters')
 	local adapter_to_config = require('mason-nvim-dap.mappings.adapter_to_config')
 	local config_mappings = require('mason-nvim-dap.mappings.configurations')
