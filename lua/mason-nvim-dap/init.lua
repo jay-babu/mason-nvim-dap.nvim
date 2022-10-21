@@ -27,6 +27,10 @@ function M.setup(config)
 		require('mason-nvim-dap.automatic_installation')()
 	end
 
+	if settings.current.automatic_setup then
+		require('mason-nvim-dap.automatic_setup')()
+	end
+
 	require('mason-nvim-dap.api.command')
 end
 

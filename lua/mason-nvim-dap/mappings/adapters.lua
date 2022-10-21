@@ -2,6 +2,11 @@ local settings = require('mason-nvim-dap.settings')
 
 local M = {}
 
+M.bash = {
+	type = 'executable',
+	command = 'bash-debug-adapter',
+}
+
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
 M.delve = {
 	type = 'server',
@@ -14,41 +19,32 @@ M.delve = {
 
 M.python = {
 	type = 'executable',
-	command = vim.fn.exepath('python3'),
-	args = { '-m', 'debugpy.adapter' },
+	command = 'debugpy-adapter',
 }
 
 M.node2 = {
 	type = 'executable',
-	command = 'node',
-	args = { vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
+	command = 'node-debug2-adapter',
 }
 
 M.chrome = {
 	type = 'executable',
-	command = 'node',
-	args = {
-		vim.fn.stdpath('data') .. '/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js',
-	},
+	command = 'chrome-debug-adapter',
 }
 
 M.firefox = {
 	type = 'executable',
-	command = 'node',
-	args = { vim.fn.stdpath('data') .. '/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js' },
+	command = 'firefox-debug-adapter',
 }
 
 M.php = {
 	type = 'executable',
-	command = 'node',
-	args = {
-		vim.fn.stdpath('data') .. '/mason/packages/php-debug-adapter/extension/out/phpDebug.js',
-	},
+	command = 'php-debug-adapter',
 }
 
 M.coreclr = {
 	type = 'executable',
-	command = vim.fn.stdpath('data') .. '/mason/packages/netcoredbg/netcoredbg',
+	command = 'netcoredbg',
 	args = { '--interpreter=vscode' },
 }
 
