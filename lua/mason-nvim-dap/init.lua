@@ -3,6 +3,15 @@ local _ = require('mason-core.functional')
 
 local M = {}
 
+-- Currently this only needs to be evaluated for the same list passed in.
+-- @param adapters string[]
+local default_setup = _.memoize(function(adapters)
+	local settings = require('mason-nvim-dap.settings')
+	if settings.current.automatic_setup then
+		require('mason-nvim-dap.automatic_setup')(adapters)
+	end
+end)
+
 function M.setup(config)
 	local settings = require('mason-nvim-dap.settings')
 
@@ -27,10 +36,6 @@ function M.setup(config)
 		require('mason-nvim-dap.automatic_installation')()
 	end
 
-	if settings.current.automatic_setup then
-		require('mason-nvim-dap.automatic_setup')()
-	end
-
 	require('mason-nvim-dap.api.command')
 end
 
@@ -51,8 +56,6 @@ function M.setup_handlers(handlers)
 	local registry = require('mason-registry')
 	local notify = require('mason-core.notify')
 
-	local default_handler = Optional.of_nilable(handlers[1])
-
 	_.each(function(handler)
 		if type(handler) == 'string' and not source_mappings.nvim_dap_to_package[handler] then
 			notify(
@@ -61,6 +64,10 @@ function M.setup_handlers(handlers)
 			)
 		end
 	end, _.keys(handlers))
+
+	local default_handler = Optional.of_nilable(handlers[1]):or_(_.always(function()
+		default_setup(_.keys(handlers))
+	end))
 
 	---@param pkg_name string
 	local function get_source_name(pkg_name)

@@ -36,6 +36,4 @@ return function()
 			end
 		)
 	end
-	local auto_setup = require('mason-nvim-dap.automatic_setup')
-	auto_setup()
 end
