@@ -75,62 +75,75 @@ M.c = vim.deepcopy(M.cpp)
 
 M.rust = vim.deepcopy(M.cpp)
 
-M.javascript = {
-	{
-		name = 'Launch',
-		type = 'node2',
-		request = 'launch',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
-		console = 'integratedTerminal',
-	},
-	{
-		-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-		name = 'Attach to process',
-		type = 'node2',
-		request = 'attach',
-		processId = require('dap.utils').pick_process,
-	},
+local node2_launch = {
+	name = 'Launch',
+	type = 'node2',
+	request = 'launch',
+	program = '${file}',
+	cwd = vim.fn.getcwd(),
+	sourceMaps = true,
+	protocol = 'inspector',
+	console = 'integratedTerminal',
+}
+local node2_attach = {
+	-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+	name = 'Attach to process',
+	type = 'node2',
+	request = 'attach',
+	processId = require('dap.utils').pick_process,
 }
 
-M.javascriptreact = {
-	{
-		type = 'chrome',
-		request = 'attach',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
+local chrome_config = {
+	name = 'Debug with Chrome',
+	type = 'chrome',
+	request = 'attach',
 
-		port = 9222,
-		webRoot = '${workspaceFolder}',
-	},
+	program = '${file}',
+	cwd = vim.fn.getcwd(),
+	sourceMaps = true,
+	protocol = 'inspector',
+	port = 9222,
+	webRoot = '${workspaceFolder}',
 }
 
-M.typescriptreact = { -- change to typescript if needed
-	{
-		type = 'chrome',
-		request = 'attach',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
-		port = 9222,
-		webRoot = '${workspaceFolder}',
-	},
-}
-
-M.typescript = {
+local firefox_config = {
 	name = 'Debug with Firefox',
 	type = 'firefox',
 	request = 'launch',
+
 	reAttach = true,
 	url = 'http://localhost:3000',
 	webRoot = '${workspaceFolder}',
 	firefoxExecutable = '/usr/bin/firefox',
 }
+
+M.javascript = {}
+table.insert(M.javascript, chrome_config)
+table.insert(M.javascript, firefox_config)
+table.insert(M.javascript, node2_launch)
+table.insert(M.javascript, node2_attach)
+M.javascript = vim.deepcopy(M.javascript)
+
+M.javascriptreact = {}
+table.insert(M.javascriptreact, chrome_config)
+table.insert(M.javascriptreact, firefox_config)
+table.insert(M.javascriptreact, node2_launch)
+table.insert(M.javascriptreact, node2_attach)
+M.javascriptreact = vim.deepcopy(M.javascriptreact)
+
+M.typescriptreact = {}
+table.insert(M.typescriptreact, chrome_config)
+table.insert(M.typescriptreact, firefox_config)
+table.insert(M.typescriptreact, node2_launch)
+table.insert(M.typescriptreact, node2_attach)
+M.typescriptreact = vim.deepcopy(M.typescriptreact)
+
+M.typescript = {}
+table.insert(M.typescript, chrome_config)
+table.insert(M.typescript, firefox_config)
+table.insert(M.typescript, node2_launch)
+table.insert(M.typescript, node2_attach)
+M.typescript = vim.deepcopy(M.typescript)
 
 M.php = {
 	{

@@ -1,13 +1,13 @@
-local settings = require('mason-nvim-dap.settings')
 local Optional = require('mason-core.optional')
 
-return function()
+-- @param adapters_required string[]
+return function(adapters_required)
 	local adapters = require('mason-nvim-dap.mappings.adapters')
 	local adapter_to_config = require('mason-nvim-dap.mappings.adapter_to_config')
 	local config_mappings = require('mason-nvim-dap.mappings.configurations')
 
 	local dap = require('dap')
-	for _, source_identifier in ipairs(settings.current.ensure_installed) do
+	for _, source_identifier in ipairs(adapters_required) do
 		Optional.of_nilable(adapters[source_identifier]):map(function(adapter_config)
 			local adapter = {
 				[source_identifier] = adapter_config,
