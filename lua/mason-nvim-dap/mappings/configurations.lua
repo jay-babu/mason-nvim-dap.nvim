@@ -3,16 +3,16 @@ local settings = require('mason-nvim-dap.settings')
 local M = {}
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
-M.go = {
+M.delve = {
 	{
 		type = 'delve',
-		name = 'Debug',
+		name = 'Delve: Debug',
 		request = 'launch',
 		program = '${file}',
 	},
 	{
 		type = 'delve',
-		name = 'Debug test', -- configuration for debugging test files
+		name = 'Delve: Debug test', -- configuration for debugging test files
 		request = 'launch',
 		mode = 'test',
 		program = '${file}',
@@ -20,7 +20,7 @@ M.go = {
 	-- works with go.mod packages and sub packages
 	{
 		type = 'delve',
-		name = 'Debug test (go.mod)',
+		name = 'Delve: Debug test (go.mod)',
 		request = 'launch',
 		mode = 'test',
 		program = './${relativeFileDirname}',
@@ -29,11 +29,11 @@ M.go = {
 
 local BASHDB_DIR = require('mason-registry').get_package('bash-debug-adapter'):get_install_path()
 	.. '/extension/bashdb_dir'
-M.sh = {
+M.bash = {
 	{
 		type = 'bash',
 		request = 'launch',
-		name = 'Launch file',
+		name = 'Bash: Launch file',
 		program = '${file}',
 		cwd = '${fileDirname}',
 		pathBashdb = BASHDB_DIR .. '/bashdb',
@@ -52,14 +52,14 @@ M.python = {
 		-- The first three options are required by nvim-dap
 		type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
 		request = 'launch',
-		name = 'Launch file',
+		name = 'Python: Launch file',
 		program = '${file}', -- This configuration will launch the current file if used.
 	},
 }
 
-M.cpp = {
+M.codelldb = {
 	{
-		name = 'Launch',
+		name = 'LLDB: Launch',
 		type = 'lldb',
 		request = 'launch',
 		program = function()
@@ -71,93 +71,67 @@ M.cpp = {
 	},
 }
 
-M.c = vim.deepcopy(M.cpp)
-
-M.rust = vim.deepcopy(M.cpp)
-
-local node2_launch = {
-	name = 'Launch',
-	type = 'node2',
-	request = 'launch',
-	program = '${file}',
-	cwd = vim.fn.getcwd(),
-	sourceMaps = true,
-	protocol = 'inspector',
-	console = 'integratedTerminal',
-}
-local node2_attach = {
-	-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-	name = 'Attach to process',
-	type = 'node2',
-	request = 'attach',
-	processId = require('dap.utils').pick_process,
+M.node2 = {
+	{
+		name = 'Node2: Launch',
+		type = 'node2',
+		request = 'launch',
+		program = '${file}',
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
+	{
+		-- For this to work you need to make sure the node process is started with the `--inspect` flag.
+		name = 'Node2: Attach to process',
+		type = 'node2',
+		request = 'attach',
+		processId = require('dap.utils').pick_process,
+	},
 }
 
-local chrome_config = {
-	name = 'Debug with Chrome',
-	type = 'chrome',
-	request = 'attach',
+M.chrome = {
+	{
+		name = 'Chrome: Debug',
+		type = 'chrome',
+		request = 'attach',
 
-	program = '${file}',
-	cwd = vim.fn.getcwd(),
-	sourceMaps = true,
-	protocol = 'inspector',
-	port = 9222,
-	webRoot = '${workspaceFolder}',
+		program = '${file}',
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = 'inspector',
+		port = 9222,
+		webRoot = '${workspaceFolder}',
+	},
 }
 
-local firefox_config = {
-	name = 'Debug with Firefox',
-	type = 'firefox',
-	request = 'launch',
+M.firefox = {
+	{
+		name = 'Firefox: Debug',
+		type = 'firefox',
+		request = 'launch',
 
-	reAttach = true,
-	url = 'http://localhost:3000',
-	webRoot = '${workspaceFolder}',
-	firefoxExecutable = '/usr/bin/firefox',
+		reAttach = true,
+		url = 'http://localhost:3000',
+		webRoot = '${workspaceFolder}',
+		firefoxExecutable = '/usr/bin/firefox',
+	},
 }
-
-M.javascript = {}
-table.insert(M.javascript, chrome_config)
-table.insert(M.javascript, firefox_config)
-table.insert(M.javascript, node2_launch)
-table.insert(M.javascript, node2_attach)
-M.javascript = vim.deepcopy(M.javascript)
-
-M.javascriptreact = {}
-table.insert(M.javascriptreact, chrome_config)
-table.insert(M.javascriptreact, firefox_config)
-table.insert(M.javascriptreact, node2_launch)
-table.insert(M.javascriptreact, node2_attach)
-M.javascriptreact = vim.deepcopy(M.javascriptreact)
-
-M.typescriptreact = {}
-table.insert(M.typescriptreact, chrome_config)
-table.insert(M.typescriptreact, firefox_config)
-table.insert(M.typescriptreact, node2_launch)
-table.insert(M.typescriptreact, node2_attach)
-M.typescriptreact = vim.deepcopy(M.typescriptreact)
-
-M.typescript = {}
-table.insert(M.typescript, chrome_config)
-table.insert(M.typescript, firefox_config)
-table.insert(M.typescript, node2_launch)
-table.insert(M.typescript, node2_attach)
-M.typescript = vim.deepcopy(M.typescript)
 
 M.php = {
 	{
 		type = 'php',
 		request = 'launch',
-		name = 'Listen for Xdebug',
+		name = 'PHP: Listen for Xdebug',
 		port = 9000,
 	},
 }
 
-M.cs = {
+M.coreclr = {
 	{
 		type = 'coreclr',
-		name = 'launch - netcoredbg',
+		name = 'NetCoreDbg: Launch',
 		request = 'launch',
 		program = function()
 			return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
