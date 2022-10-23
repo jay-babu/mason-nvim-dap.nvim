@@ -2,7 +2,7 @@ local _ = require('mason-core.functional')
 
 local M = {}
 
-M = {
+M.adapter_to_configs = {
 	['bash'] = { 'sh' },
 	['chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 	['coreclr'] = { 'cs' },
