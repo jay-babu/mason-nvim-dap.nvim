@@ -9,7 +9,7 @@
 -   allow you to (i) automatically install, and (ii) automatically set up a predefined list of adapters
 -   translate between `dap` adapter names and `mason.nvim` package names (e.g. `python` <-> `debugpy`)
 
-It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`.
+It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`. (This plugin won't really work without them)
 
 **Note: this plugin uses the `dap` adapter names in the APIs it exposes - not `mason.nvim` package names.
 
@@ -88,18 +88,53 @@ local DEFAULT_SETTINGS = {
     -- A list of adapters to install if they're not already installed.
     -- This setting has no relation with the `automatic_installation` setting.
     ensure_installed = {},
-    -- Run `require("dap").setup`.
-    -- Will automatically install masons tools based on selected adapters in `dap`.
+
+	-- NOTE: this is left here for future porting in case needed
+	-- Whether adapters that are set up (via dap) should be automatically installed if they're not already installed.
+	-- This setting has no relation with the `ensure_installed` setting.
+	-- Can either be:
+	--   - false: Servers are not automatically installed.
+	--   - true: All servers set up via lspconfig are automatically installed.
+	--   - { exclude: string[] }: All servers set up via mason-nvim-dap, except the ones provided in the list, are automatically installed.
+	--       Example: automatic_installation = { exclude = { "python", "delve" } }
     automatic_installation = false,
+
+	-- Whether adapters that are installed in mason should be automatically set up in dap.
+	-- Removes the need to set up dap manually.
+	-- See mappings.adapters and mappings.configurations for settings.
+	-- Must invoke when set to true: `require 'mason-nvim-dap'.setup_handlers()`
+	-- Can either be:
+	-- 	- false: Dap is not automatically configured.
+	-- 	- true: Dap is automatically configured.
+	-- 	- {adapters: {ADAPTER: {}, }, configurations: {ADAPTER: {}, }}. Allows overriding default configuration.
+	automatic_setup = false,
 }
 ```
 
+# Automatic Setup Usage
 
-# Setup handlers usage
+Automatic Setup is a need feature that removes the need to configure `dap` for supported adapters.
+Adapters found installed in `mason` will automatically be setup for dap.
+
+## Example Config
+
+```lua
+require("mason").setup()
+require("dap").setup()
+require("mason-nvim-dap").setup({
+    automatic_setup = true,
+})
+```
+
+See the Default Configuration section to understand how the default dap configs can be overriden.
 
 # Setup handlers usage
 
 The `setup_handlers()` function provides a dynamic way of setting up sources and any other needed logic, It can also do that during runtime.
+
+**NOTE:** When setting `automatic_setup = true`, the handler function needs to be called at a minimum like:
+`require 'mason-nvim-dap'.setup_handlers()`. When passing in a custom handler function for the the default or a source,
+then the automatic_setup function one won't be invoked. See below to keep original functionality inside the custom handler.
 
 ```lua
 local dap = require("dap")
@@ -111,8 +146,12 @@ require ('mason-nvim-dap').setup({
 require 'mason-nvim-dap'.setup_handlers {
     function(source_name)
       -- all sources with no handler get passed here
+
+
+      -- Keep original functionality of `automatic_setup = true`
+      require('mason-nvim-dap.automatic_setup')(source_name)
     end,
-    python = function()
+    python = function(source_name)
         dap.adapters.python = {
 	        type = "executable",
 	        command = "/usr/bin/python3",

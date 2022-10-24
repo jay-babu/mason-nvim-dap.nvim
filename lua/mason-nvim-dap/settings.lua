@@ -16,6 +16,13 @@ local DEFAULT_SETTINGS = {
 	--       Example: automatic_installation = { exclude = { "python", "delve" } }
 	automatic_installation = false,
 
+	-- Whether adapters that are installed in mason should be automatically set up in dap.
+	-- Removes the need to set up dap manually.
+	-- See mappings.adapters and mappings.configurations for settings.
+	-- Can either be:
+	-- 	- false: Dap is not automatically configured.
+	-- 	- true: Dap is automatically configured.
+	-- 	- {adapters: {ADAPTER: {}, }, configurations: {ADAPTER: {}, }}. Allows overriding default configuration.
 	automatic_setup = false,
 }
 
@@ -24,7 +31,9 @@ M.current = M._DEFAULT_SETTINGS
 
 ---@param opts MasonNvimDapSettings
 function M.set(opts)
-	opts.automatic_setup = opts.automatic_setup and {}
+	if opts.automatic_setup == true then
+		opts.automatic_setup = {}
+	end
 
 	M.current = vim.tbl_deep_extend('force', M.current, opts)
 	vim.validate({
