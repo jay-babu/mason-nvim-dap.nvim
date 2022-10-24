@@ -4,13 +4,13 @@ local _ = require('mason-core.functional')
 local M = {}
 
 -- Currently this only needs to be evaluated for the same list passed in.
--- @param adapters string[]
-local default_setup = _.memoize(function(adapters)
+-- @param adapters string
+local default_setup = function(adapter)
 	local settings = require('mason-nvim-dap.settings')
 	if settings.current.automatic_setup then
-		require('mason-nvim-dap.automatic_setup')(adapters)
+		require('mason-nvim-dap.automatic_setup')(adapter)
 	end
-end)
+end
 
 function M.setup(config)
 	local settings = require('mason-nvim-dap.settings')
@@ -51,6 +51,7 @@ function M.get_installed_sources()
 end
 
 function M.setup_handlers(handlers)
+	handlers = handlers or {}
 	local Optional = require('mason-core.optional')
 	local source_mappings = require('mason-nvim-dap.mappings.source')
 	local registry = require('mason-registry')
@@ -65,14 +66,14 @@ function M.setup_handlers(handlers)
 		end
 	end, _.keys(handlers))
 
-	local default_handler = Optional.of_nilable(handlers[1]):or_(_.always(function()
-		default_setup(_.keys(handlers))
-	end))
-
 	---@param pkg_name string
 	local function get_source_name(pkg_name)
 		return Optional.of_nilable(source_mappings.package_to_nvim_dap[pkg_name])
 	end
+
+	local installed_sources = _.filter_map(get_source_name, registry.get_installed_package_names())
+
+	local default_handler = Optional.of_nilable(handlers[1]):or_(_.always(Optional.of_nilable(default_setup)))
 
 	local function call_handler(source_name)
 		log.fmt_trace('Checking handler for %s', source_name)
@@ -85,7 +86,6 @@ function M.setup_handlers(handlers)
 		end)
 	end
 
-	local installed_sources = _.filter_map(get_source_name, registry.get_installed_package_names())
 	_.each(call_handler, installed_sources)
 	registry:on(
 		'package:install:success',
