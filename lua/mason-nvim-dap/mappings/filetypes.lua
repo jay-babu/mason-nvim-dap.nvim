@@ -11,6 +11,7 @@ M.adapter_to_configs = {
 	['node2'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 	['php'] = { 'php' },
 	['python'] = { 'python' },
+	['cppdbg'] = { 'c', 'cpp', 'rust' },
 }
 
 return M

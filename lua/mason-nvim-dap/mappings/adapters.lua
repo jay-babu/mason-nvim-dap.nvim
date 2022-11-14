@@ -48,6 +48,17 @@ M.coreclr = {
 	args = { '--interpreter=vscode' },
 }
 
+M.cppdbg = {
+	id = 'cppdbg',
+	type = 'executable',
+	command = 'OpenDebugAD7',
+}
+if vim.fn.has('win32') == 1 then
+	M.cppdbg.options = {
+		detached = false,
+	}
+end
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.adapters or {})
 
 return M
