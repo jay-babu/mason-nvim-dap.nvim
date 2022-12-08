@@ -164,6 +164,22 @@ M.cppdbg = {
 	},
 }
 
+M.elixir = {
+	{
+		type = 'mix_task',
+		name = 'mix test',
+		task = 'test',
+		taskArgs = { '--trace' },
+		request = 'launch',
+		startApps = true, -- for Phoenix projects
+		projectDir = '${workspaceFolder}',
+		requireFiles = {
+			'test/**/test_helper.exs',
+			'test/**/*_test.exs',
+		},
+	},
+}
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.configurations or {})
 
 return M
