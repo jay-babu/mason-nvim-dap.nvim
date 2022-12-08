@@ -19,15 +19,6 @@ function M.setup(config)
 		settings.set(config)
 	end
 
-	-- NOTE: this is left here for future porting in case needed
-	-- local ok, err = pcall(function()
-	--     require "mason-lspconfig.lspconfig_hook"()
-	--     require "mason-lspconfig.server_config_extensions"()
-	-- end)
-	-- if not ok then
-	--     log.error("Failed to set up lspconfig integration.", err)
-	-- end
-
 	if #settings.current.ensure_installed > 0 then
 		require('mason-nvim-dap.ensure_installed')()
 	end
