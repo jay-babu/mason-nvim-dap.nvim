@@ -12,6 +12,7 @@ M.adapter_to_configs = {
 	['php'] = { 'php' },
 	['python'] = { 'python' },
 	['cppdbg'] = { 'c', 'cpp', 'rust' },
+	['codelldb'] = { 'c', 'cpp', 'rust' },
 }
 
 return M
