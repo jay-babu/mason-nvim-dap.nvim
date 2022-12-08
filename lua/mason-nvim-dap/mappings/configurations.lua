@@ -60,7 +60,7 @@ M.python = {
 M.codelldb = {
 	{
 		name = 'LLDB: Launch',
-		type = 'lldb',
+		type = 'codelldb',
 		request = 'launch',
 		program = function()
 			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')

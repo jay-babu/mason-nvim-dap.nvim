@@ -59,6 +59,18 @@ if vim.fn.has('win32') == 1 then
 	}
 end
 
+M.codelldb = {
+	type = 'server',
+	port = '${port}',
+	executable = {
+		command = 'codelldb',
+		args = { '--port', '${port}' },
+	},
+}
+if vim.fn.has('win32') == 1 then
+	M.codelldb.executable.detached = false
+end
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.adapters or {})
 
 return M
