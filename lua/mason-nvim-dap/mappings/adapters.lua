@@ -22,9 +22,12 @@ M.python = {
 	command = 'debugpy-adapter',
 }
 
+local NODEDEBUG_DIR = require('mason-registry').get_package('node-debug2-adapter'):get_install_path() ..
+		'/out/src/nodeDebug.js'
 M.node2 = {
 	type = 'executable',
-	command = 'node-debug2-adapter',
+	command = 'node',
+	args = { NODEDEBUG_DIR }
 }
 
 M.chrome = {
