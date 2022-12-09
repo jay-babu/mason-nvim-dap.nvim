@@ -17,14 +17,20 @@ M.delve = {
 	},
 }
 
+local PYTHON_DIR = require('mason-registry').get_package('debugpy'):get_install_path()
+	.. '/venv/Scripts/python'
 M.python = {
-	type = 'executable',
-	command = 'debugpy-adapter',
+    type = 'executable',
+    command = PYTHON_DIR,
+    args = { '-m', "debugpy.adapter" },
 }
 
+local NODE_DEBUG = require( 'mason-registry').get_package('node-debug2-adapter'):get_install_path()
+	.. '/out/src/nodeDebug.js'
 M.node2 = {
 	type = 'executable',
-	command = 'node-debug2-adapter',
+	command = 'node',
+	args = { NODE_DEBUG },
 }
 
 M.chrome = {
