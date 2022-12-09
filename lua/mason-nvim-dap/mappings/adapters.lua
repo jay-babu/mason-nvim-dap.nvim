@@ -17,9 +17,12 @@ M.delve = {
 	},
 }
 
+local PYTHON_DIR = require('mason-registry').get_package('debugpy'):get_install_path()
+	.. '/venv/Scripts/python'
 M.python = {
-	type = 'executable',
-	command = 'debugpy-adapter',
+    type = 'executable',
+    command = PYTHON_DIR,
+    args = { '-m', "debugpy.adapter" },
 }
 
 local NODE_DEBUG = require( 'mason-registry').get_package('node-debug2-adapter'):get_install_path()
