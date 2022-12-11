@@ -12,7 +12,6 @@ M.nvim_dap_to_package = {
 	['firefox'] = 'firefox-debug-adapter',
 	['php'] = 'php-debug-adapter',
 	['coreclr'] = 'netcoredbg',
-	['js'] = 'js-debug-adapter',
 	['codelldb'] = 'codelldb',
 	['bash'] = 'bash-debug-adapter',
 	['javadbg'] = 'java-debug-adapter',
