@@ -13,6 +13,7 @@ M.adapter_to_configs = {
 	['python'] = { 'python' },
 	['cppdbg'] = { 'c', 'cpp', 'rust' },
 	['codelldb'] = { 'c', 'cpp', 'rust' },
+	['mix_task'] = { 'elixir' },
 }
 
 return M
