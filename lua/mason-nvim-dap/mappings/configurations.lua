@@ -180,6 +180,19 @@ M.elixir = {
 	},
 }
 
+M.kotlin = {
+	{
+		type = 'kotlin',
+		name = 'launch - kotlin',
+		request = 'launch',
+		projectRoot = vim.fn.getcwd() .. '/app',
+		mainClass = function()
+			-- return vim.fn.input("Path to main class > ", "myapp.sample.app.AppKt", "file")
+			return vim.fn.input('Path to main class > ', '', 'file')
+		end,
+	},
+}
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.configurations or {})
 
 return M

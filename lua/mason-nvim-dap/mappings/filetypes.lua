@@ -14,6 +14,7 @@ M.adapter_to_configs = {
 	['cppdbg'] = { 'c', 'cpp', 'rust' },
 	['codelldb'] = { 'c', 'cpp', 'rust' },
 	['mix_task'] = { 'elixir' },
+	['kotlin'] = { 'kotlin' },
 }
 
 return M
