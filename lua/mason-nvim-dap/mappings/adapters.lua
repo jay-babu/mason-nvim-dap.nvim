@@ -76,6 +76,12 @@ M.mix_task = {
 	args = {},
 }
 
+M.kotlin = {
+	type = 'executable',
+	command = 'kotlin-debug-adapter',
+	args = { '--interpreter=vscode' },
+}
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.adapters or {})
 
 return M

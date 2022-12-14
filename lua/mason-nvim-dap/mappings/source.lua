@@ -19,6 +19,7 @@ M.nvim_dap_to_package = {
 	['mock'] = 'mockdebug',
 	['puppet'] = 'puppet-editor-services',
 	['elixir'] = 'elixir-ls',
+	['kotlin'] = 'kotlin-debug-adapter',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)
