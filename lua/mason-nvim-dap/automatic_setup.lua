@@ -4,7 +4,7 @@ local _ = require('mason-core.functional')
 -- @param adapter string
 return _.memoize(function(adapter)
 	local adapters = require('mason-nvim-dap.mappings.adapters')
-	local filetypes = require('mason-nvim-dap.mappings.filetypes')
+	local filetypes = require('mason-nvim-dap.mappings.filetypes').adapter_to_configs
 	local configurations = require('mason-nvim-dap.mappings.configurations')
 
 	local dap = require('dap')
