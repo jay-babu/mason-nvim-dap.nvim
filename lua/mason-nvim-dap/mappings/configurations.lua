@@ -47,6 +47,7 @@ M.bash = {
 	},
 }
 
+local venv_path = os.getenv('VIRTUAL_ENV') or os.getenv('CONDA_PREFIX')
 M.python = {
 	{
 		-- The first three options are required by nvim-dap
@@ -54,6 +55,7 @@ M.python = {
 		request = 'launch',
 		name = 'Python: Launch file',
 		program = '${file}', -- This configuration will launch the current file if used.
+		pythonPath = venv_path and (venv_path .. '/bin/python') or nil,
 	},
 }
 
