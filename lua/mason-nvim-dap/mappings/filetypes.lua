@@ -1,4 +1,5 @@
 local _ = require('mason-core.functional')
+local settings = require('mason-nvim-dap.settings')
 
 local M = {}
 
@@ -16,5 +17,8 @@ M.adapter_to_configs = {
 	['mix_task'] = { 'elixir' },
 	['kotlin'] = { 'kotlin' },
 }
+
+M.adapter_to_configs =
+	vim.tbl_deep_extend('force', M.adapter_to_configs, settings.current.automatic_setup.filetypes or {})
 
 return M

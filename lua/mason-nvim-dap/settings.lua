@@ -22,7 +22,7 @@ local DEFAULT_SETTINGS = {
 	-- Can either be:
 	-- 	- false: Dap is not automatically configured.
 	-- 	- true: Dap is automatically configured.
-	-- 	- {adapters: {ADAPTER: {}, }, configurations: {ADAPTER: {}, }}. Allows overriding default configuration.
+	-- 	- {adapters: {ADAPTER: {}, }, configurations: {ADAPTER: {}, }, filetypes: {ADAPTER: {}, }}. Allows overriding default configuration.
 	automatic_setup = false,
 }
 
