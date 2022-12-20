@@ -18,6 +18,7 @@ M.adapter_to_configs = {
 	['kotlin'] = { 'kotlin' },
 }
 
-M.adapter_to_configs = vim.tbl_deep_extend('force', M.adapter_to_configs, settings.current.automatic_setup.filetypes or {})
+M.adapter_to_configs =
+	vim.tbl_deep_extend('force', M.adapter_to_configs, settings.current.automatic_setup.filetypes or {})
 
 return M
