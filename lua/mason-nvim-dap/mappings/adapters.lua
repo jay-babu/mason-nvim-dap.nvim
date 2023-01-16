@@ -82,6 +82,12 @@ M.kotlin = {
 	args = { '--interpreter=vscode' },
 }
 
+M.dart = {
+	type = 'executable',
+	command = 'dart-debug-adapter',
+	args = { 'flutter' },
+}
+
 M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.adapters or {})
 
 return M

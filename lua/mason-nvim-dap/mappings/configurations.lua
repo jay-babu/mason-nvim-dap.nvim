@@ -145,6 +145,7 @@ local function get_dll()
 				coroutine.resume(dap_run_co, choice)
 			end
 		end
+
 		vim.ui.select(items, opts, cont)
 	end)
 end
@@ -210,6 +211,18 @@ M.kotlin = {
 			-- return vim.fn.input("Path to main class > ", "myapp.sample.app.AppKt", "file")
 			return vim.fn.input('Path to main class > ', '', 'file')
 		end,
+	},
+}
+
+M.dart = {
+	{
+		type = 'dart',
+		request = 'launch',
+		name = 'Launch flutter',
+		dartSdkPath = os.getenv('HOME') .. '/flutter/bin/cache/dart-sdk/',
+		flutterSdkPath = os.getenv('HOME') .. '/flutter',
+		program = '${workspaceFolder}/lib/main.dart',
+		cwd = '${workspaceFolder}',
 	},
 }
 

@@ -20,6 +20,7 @@ M.nvim_dap_to_package = {
 	['puppet'] = 'puppet-editor-services',
 	['elixir'] = 'elixir-ls',
 	['kotlin'] = 'kotlin-debug-adapter',
+	['dart'] = 'dart-debug-adapter',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)
