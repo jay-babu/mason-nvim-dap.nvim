@@ -29,7 +29,7 @@ It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`. 
 use {
     "williamboman/mason.nvim",
     "mfussenegger/nvim-dap",
-    "jayp0521/mason-nvim-dap.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
 }
 ```
 
@@ -38,7 +38,7 @@ use {
 ```vim
 Plug 'williamboman/mason.nvim'
 Plug 'mfussenegger/nvim-dap'
-Plug 'jayp0521/mason-nvim-dap.nvim'
+Plug 'jay-babu/mason-nvim-dap.nvim'
 ```
 
 
@@ -172,4 +172,4 @@ require 'mason-nvim-dap'.setup_handlers {
 
 # Available Dap Adapters
 
-See https://github.com/jayp0521/mason-nvim-dap/blob/main/lua/mason-nvim-dap/mappings/source.lua
+See https://github.com/jay-babu/mason-nvim-dap/blob/main/lua/mason-nvim-dap/mappings/source.lua
