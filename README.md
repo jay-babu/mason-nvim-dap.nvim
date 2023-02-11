@@ -172,4 +172,4 @@ require 'mason-nvim-dap'.setup_handlers {
 
 # Available Dap Adapters
 
-See https://github.com/jay-babu/mason-nvim-dap/blob/main/lua/mason-nvim-dap/mappings/source.lua
+See https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
