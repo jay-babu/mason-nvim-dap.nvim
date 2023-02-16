@@ -88,6 +88,6 @@ M.dart = {
 	args = { 'flutter' },
 }
 
-M = vim.tbl_deep_extend('force', M, settings.current.automatic_setup.adapters or {})
+M = require('mason-nvim-dap.internal.overrides.func_or_extend')(settings.current.automatic_setup.adapters or {}, M)
 
 return M

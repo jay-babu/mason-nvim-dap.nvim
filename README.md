@@ -104,7 +104,8 @@ local DEFAULT_SETTINGS = {
 	-- Can either be:
 	-- 	- false: Dap is not automatically configured.
 	-- 	- true: Dap is automatically configured.
-	-- 	- {adapters: {ADAPTER: {}, }, configurations: {ADAPTER: {}, }}. Allows overriding default configuration.
+	-- 	- {adapters: {ADAPTER: {}, }, configurations: {configuration: {}, }, filetypes: {filetype: {}, }}. Allows overriding default configuration.
+	-- 	- {adapters: function(default), configurations: function(default), filetypes: function(default), }. Allows modifying the default configuration passed in via function.
 	automatic_setup = false,
 }
 ```
@@ -121,6 +122,26 @@ require("mason").setup()
 require("mason-nvim-dap").setup({
     automatic_setup = true,
 })
+require 'mason-nvim-dap'.setup_handlers {}
+```
+
+### Overriding Default Settings
+
+```lua
+require("mason").setup()
+require("mason-nvim-dap").setup({
+    automatic_setup = {
+        -- modifies the default configurations table
+        -- pass in a function or a list to override with
+        -- the same can be done for adapters and filetypes
+        configurations = function(default)
+            default.php[1].port = 9003
+
+            return default
+        end,
+   }
+})
+require 'mason-nvim-dap'.setup_handlers {}
 ```
 
 See the Default Configuration section to understand how the default dap configs can be overriden.

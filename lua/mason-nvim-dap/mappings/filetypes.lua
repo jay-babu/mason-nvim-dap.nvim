@@ -19,7 +19,6 @@ M.adapter_to_configs = {
 	['python'] = { 'python' },
 }
 
-M.adapter_to_configs =
-	vim.tbl_deep_extend('force', M.adapter_to_configs, settings.current.automatic_setup.filetypes or {})
+M = require('mason-nvim-dap.internal.overrides.func_or_extend')(settings.current.automatic_setup.filetypes or {}, M)
 
 return M
