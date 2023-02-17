@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.0.0...v1.1.0) (2023-02-17)
+
+
+### Features
+
+* **cppdb:** Add asm filetype to configurations ([#42](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/42)) ([64f0b2e](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/64f0b2e9799fd0a6c635fbbf1d0e9ab4791a28a8))
+
 ## 1.0.0 (2023-02-16)
 
 
