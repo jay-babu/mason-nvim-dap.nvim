@@ -20,7 +20,6 @@ It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`. 
 -   [`mason.nvim`](https://github.com/williamboman/mason.nvim)
 -   [`nvim-dap`](https://github.com/mfussenegger/nvim-dap)
 
-
 # Installation
 
 ## [Packer](https://github.com/wbthomason/packer.nvim)
