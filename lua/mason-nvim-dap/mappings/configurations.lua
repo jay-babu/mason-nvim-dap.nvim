@@ -117,7 +117,7 @@ M.firefox = {
 		reAttach = true,
 		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
-		firefoxExecutable = '/usr/bin/firefox',
+		firefoxExecutable = vim.fn.exepath('firefox'),
 	},
 }
 
@@ -177,7 +177,7 @@ M.cppdbg = {
 		request = 'launch',
 		MIMode = 'gdb',
 		miDebuggerServerAddress = 'localhost:1234',
-		miDebuggerPath = '/usr/bin/gdb',
+		miDebuggerPath = vim.fn.exepath('gdb'),
 		cwd = '${workspaceFolder}',
 		program = function()
 			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
