@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.1.0...v1.2.0) (2023-02-18)
+
+
+### Features
+
+* obtain executable paths dynamically ([3dff251](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/3dff2516884888acc1e005b9f53116cd89c1f30b))
+
 ## [1.1.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.0.0...v1.1.0) (2023-02-17)
 
 
