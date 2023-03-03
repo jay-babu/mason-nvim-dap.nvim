@@ -25,6 +25,9 @@ It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`. 
 
 **Note: this plugin uses the `dap` adapter names in the APIs it exposes - not `mason.nvim` package names.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=jay-babu/mason-null-ls.nvim,jay-babu/mason-nvim-dap.nvim&type=Date)](https://star-history.com/#jay-babu/mason-null-ls.nvim&jay-babu/mason-nvim-dap.nvim&Date)
 
 # Requirements
 
