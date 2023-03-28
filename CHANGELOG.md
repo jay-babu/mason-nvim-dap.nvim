@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.0...v1.2.1) (2023-03-28)
+
+
+### Bug Fixes
+
+* **codelldb:** use vim.fn.exepath for command ([#51](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/51)) ([#52](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/52)) ([f464b1c](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/f464b1cd69f4a3db21910d85a94f3181f39c6ab4))
+
 ## [1.2.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.1.0...v1.2.0) (2023-02-18)
 
 
