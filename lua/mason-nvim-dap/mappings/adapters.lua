@@ -63,13 +63,14 @@ M.codelldb = {
 	type = 'server',
 	port = '${port}',
 	executable = {
-		command = 'codelldb',
+		command = vim.fn.exepath('codelldb'),
 		args = { '--port', '${port}' },
 	},
 }
 if vim.fn.has('win32') == 1 then
 	M.codelldb.executable.detached = false
 end
+
 M.mix_task = {
 	type = 'executable',
 	command = 'elixir-ls-debugger', -- https://github.com/williamboman/mason.nvim/blob/d97579ccd5689f9c6c365e841ea99c27954112ec/lua/mason-registry/elixir-ls/init.lua#L26
