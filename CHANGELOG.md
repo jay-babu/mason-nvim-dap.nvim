@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.1...v1.2.2) (2023-03-31)
+
+
+### Bug Fixes
+
+* use vim.fn.exepath for all adapter commands ([#54](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/54)) ([7f54a17](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/7f54a17954e58a587b465bb6f42fa6144dd4b69d))
+
 ## [1.2.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.0...v1.2.1) (2023-03-28)
 
 
