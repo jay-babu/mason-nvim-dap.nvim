@@ -38,6 +38,16 @@ It is recommended to use this extension if you use `mason.nvim` and `nvim-dap`. 
 
 # Installation
 
+## [Lazy](https://github.com/folke/lazy.nvim)
+
+```lua
+{
+    "williamboman/mason.nvim",
+    "mfussenegger/nvim-dap",
+    "jay-babu/mason-nvim-dap.nvim",
+}
+```
+
 ## [Packer](https://github.com/wbthomason/packer.nvim)
 
 ```lua
