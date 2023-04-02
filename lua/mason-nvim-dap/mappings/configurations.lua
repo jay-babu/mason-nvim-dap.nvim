@@ -27,8 +27,6 @@ M.delve = {
 	},
 }
 
-local BASHDB_DIR = require('mason-registry').get_package('bash-debug-adapter'):get_install_path()
-	.. '/extension/bashdb_dir'
 M.bash = {
 	{
 		type = 'bash',
@@ -36,8 +34,8 @@ M.bash = {
 		name = 'Bash: Launch file',
 		program = '${file}',
 		cwd = '${fileDirname}',
-		pathBashdb = BASHDB_DIR .. '/bashdb',
-		pathBashdbLib = BASHDB_DIR,
+		pathBashdb = '~/.local/share/nvim/mason/packages/bash-debug-adapter/bash-debug-adapter',
+		pathBashdbLib = '~/.local/share/nvim/mason/packages/bash-debug-adapter/bash-debug-adapter',
 		pathBash = 'bash',
 		pathCat = 'cat',
 		pathMkfifo = 'mkfifo',
