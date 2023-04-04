@@ -122,16 +122,8 @@ local DEFAULT_SETTINGS = {
 	--       Example: automatic_installation = { exclude = { "python", "delve" } }
     automatic_installation = false,
 
-	-- Whether adapters that are installed in mason should be automatically set up in dap.
-	-- Removes the need to set up dap manually.
-	-- See mappings.adapters and mappings.configurations for settings.
-	-- Must invoke when set to true: `require 'mason-nvim-dap'.setup_handlers()`
-	-- Can either be:
-	-- 	- false: Dap is not automatically configured.
-	-- 	- true: Dap is automatically configured.
-	-- 	- {adapters: {ADAPTER: {}, }, configurations: {configuration: {}, }, filetypes: {filetype: {}, }}. Allows overriding default configuration.
-	-- 	- {adapters: function(default), configurations: function(default), filetypes: function(default), }. Allows modifying the default configuration passed in via function.
-	automatic_setup = false,
+    -- See below on usage
+    handlers = nil,
 }
 ```
 
@@ -147,73 +139,47 @@ require("mason").setup()
 require("mason-nvim-dap").setup({
     automatic_setup = true,
 })
-require 'mason-nvim-dap'.setup_handlers {}
 ```
 
-### Overriding Default Settings
+# Handlers usage
 
+The `handlers` table provides a dynamic way of setting up sources and any other needed logic, It can also do that during runtime.
+
+The config table passed to each hander contains the below items.
 ```lua
-require("mason").setup()
-require("mason-nvim-dap").setup({
-    automatic_setup = {
-        -- modifies the default configurations table
-        -- pass in a function or a list to override with
-        -- the same can be done for adapters and filetypes
-        configurations = function(default)
-            default.php[1].port = 9003
+local config = {
+	name -- adapter name
 
-            return default
-        end,
-   }
-})
-require 'mason-nvim-dap'.setup_handlers {}
-```
-
-See the Default Configuration section to understand how the default dap configs can be overriden.
-
-# Setup handlers usage
-
-The `setup_handlers()` function provides a dynamic way of setting up sources and any other needed logic, It can also do that during runtime.
-
-**NOTE:** When setting `automatic_setup = true`, the handler function needs to be called at a minimum like:
-`require 'mason-nvim-dap'.setup_handlers()`. When passing in a custom handler function for the the default or a source,
-then the automatic_setup function one won't be invoked. See below to keep original functionality inside the custom handler.
-
-```lua
-local dap = require("dap")
-
-require ('mason-nvim-dap').setup({
-    ensure_installed = {'stylua', 'jq'}
-})
-
-require 'mason-nvim-dap'.setup_handlers {
-    function(source_name)
-      -- all sources with no handler get passed here
-
-
-      -- Keep original functionality of `automatic_setup = true`
-      require('mason-nvim-dap.automatic_setup')(source_name)
-    end,
-    python = function(source_name)
-        dap.adapters.python = {
-	        type = "executable",
-	        command = "/usr/bin/python3",
-	        args = {
-		        "-m",
-		        "debugpy.adapter",
-	        },
-        }
-
-        dap.configurations.python = {
-	        {
-		        type = "python",
-		        request = "launch",
-		        name = "Launch file",
-		        program = "${file}", -- This configuration will launch the current file if used.
-	        },
-        }
-    end,
+	-- All the items below are looked up by the adapter name.
+	adapters -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/adapters.lua
+	configurations -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/configurations.lua
+	filetypes -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/filetypes.lua
 }
+```
+
+```lua
+require ('mason-nvim-dap').setup({
+    ensure_installed = {'stylua', 'jq'},
+    handlers = {
+        function(config)
+          -- all sources with no handler get passed here
+
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+        python = function(config)
+            config.adapters = {
+	            type = "executable",
+	            command = "/usr/bin/python3",
+	            args = {
+		            "-m",
+		            "debugpy.adapter",
+	            },
+            }
+            require('mason-nvim-dap').default_setup(config)
+        end,
+    },
+})
 ```
 
 # Available Dap Adapters

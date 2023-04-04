@@ -89,6 +89,4 @@ M.dart = {
 	args = { 'flutter' },
 }
 
-M = require('mason-nvim-dap.internal.overrides.func_or_extend')(settings.current.automatic_setup.adapters or {}, M)
-
 return M
