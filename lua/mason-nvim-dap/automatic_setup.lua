@@ -2,19 +2,17 @@ local Optional = require('mason-core.optional')
 local _ = require('mason-core.functional')
 
 -- @param adapter string
-return _.memoize(function(adapter)
-	local adapters = require('mason-nvim-dap.mappings.adapters')
-	local filetypes = require('mason-nvim-dap.mappings.filetypes').adapter_to_configs
-	local configurations = require('mason-nvim-dap.mappings.configurations')
-
+return _.memoize(function(config)
 	local dap = require('dap')
-	Optional.of_nilable(adapters[adapter]):map(function(adapter_config)
-		dap.adapters[adapter] = adapter_config
-		local configuration = configurations[adapter] or {}
+
+	Optional.of_nilable(config.adapters):map(function(adapter_config)
+		dap.adapters[config.name] = adapter_config
+		local configuration = config.configurations or {}
 		if not vim.tbl_isempty(configuration) then
-			for _, filetype in ipairs(filetypes[adapter]) do
+			for _, filetype in ipairs(config.filetypes) do
 				dap.configurations[filetype] = vim.list_extend(dap.configurations[filetype] or {}, configuration)
 			end
 		end
 	end)
+	return config
 end)

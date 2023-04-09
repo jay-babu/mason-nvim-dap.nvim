@@ -1,9 +1,7 @@
 local _ = require('mason-core.functional')
 local settings = require('mason-nvim-dap.settings')
 
-local M = {}
-
-M.adapter_to_configs = {
+local M = {
 	['bash'] = { 'sh' },
 	['chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 	['codelldb'] = { 'c', 'cpp', 'rust' },
@@ -18,7 +16,5 @@ M.adapter_to_configs = {
 	['php'] = { 'php' },
 	['python'] = { 'python' },
 }
-
-M = require('mason-nvim-dap.internal.overrides.func_or_extend')(settings.current.automatic_setup.filetypes or {}, M)
 
 return M

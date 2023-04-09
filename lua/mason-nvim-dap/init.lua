@@ -4,44 +4,14 @@ local _ = require('mason-core.functional')
 local M = {}
 
 -- Currently this only needs to be evaluated for the same list passed in.
--- @param adapters string
-local default_setup = function(adapter)
-	local settings = require('mason-nvim-dap.settings')
-	if settings.current.automatic_setup then
-		require('mason-nvim-dap.automatic_setup')(adapter)
-	end
+--- @param config table
+M.default_setup = function(config)
+	return require('mason-nvim-dap.automatic_setup')(config)
 end
 
-function M.setup(config)
-	local settings = require('mason-nvim-dap.settings')
-
-	if config then
-		settings.set(config)
-	end
-
-	if #settings.current.ensure_installed > 0 then
-		require('mason-nvim-dap.ensure_installed')()
-	end
-
-	if settings.current.automatic_installation then
-		require('mason-nvim-dap.automatic_installation')()
-	end
-
-	require('mason-nvim-dap.api.command')
-end
-
----@return string[]
-function M.get_installed_sources()
-	local Optional = require('mason-core.optional')
-	local registry = require('mason-registry')
-	local source_mappings = require('mason-nvim-dap.mappings.source')
-
-	return _.filter_map(function(pkg_name)
-		return Optional.of_nilable(source_mappings.package_to_nvim_dap[pkg_name])
-	end, registry.get_installed_package_names())
-end
-
-function M.setup_handlers(handlers)
+---@param handlers table<string, fun(source_name: string, methods: string[])> | nil
+---@return nil
+local function setup_handlers(handlers)
 	handlers = handlers or {}
 	local Optional = require('mason-core.optional')
 	local source_mappings = require('mason-nvim-dap.mappings.source')
@@ -64,13 +34,24 @@ function M.setup_handlers(handlers)
 
 	local installed_sources = _.filter_map(get_source_name, registry.get_installed_package_names())
 
-	local default_handler = Optional.of_nilable(handlers[1]):or_(_.always(Optional.of_nilable(default_setup)))
+	local default_handler = Optional.of_nilable(handlers[1]):or_(_.always(Optional.of_nilable(M.default_setup)))
 
-	local function call_handler(source_name)
-		log.fmt_trace('Checking handler for %s', source_name)
-		Optional.of_nilable(handlers[source_name]):or_(_.always(default_handler)):if_present(function(handler)
-			log.fmt_trace('Calling handler for %s', source_name)
-			local ok, err = pcall(handler, source_name)
+	local function call_handler(adapter_name)
+		log.fmt_trace('Checking handler for %s', adapter_name)
+		Optional.of_nilable(handlers[adapter_name]):or_(_.always(default_handler)):if_present(function(handler)
+			log.fmt_trace('Calling handler for %s', adapter_name)
+			local adapters = require('mason-nvim-dap.mappings.adapters')
+			local filetypes = require('mason-nvim-dap.mappings.filetypes')
+			local configurations = require('mason-nvim-dap.mappings.configurations')
+
+			local config = {
+				name = adapter_name,
+				adapters = adapters[adapter_name],
+				configurations = configurations[adapter_name],
+				filetypes = filetypes[adapter_name],
+			}
+
+			local ok, err = pcall(handler, config)
 			if not ok then
 				vim.notify(err, vim.log.levels.ERROR)
 			end
@@ -86,6 +67,40 @@ function M.setup_handlers(handlers)
 	)
 end
 
+---@param config MasonNvimDapSettings | nil
+function M.setup(config)
+	local settings = require('mason-nvim-dap.settings')
+
+	if config then
+		settings.set(config)
+	end
+
+	if #settings.current.ensure_installed > 0 then
+		require('mason-nvim-dap.ensure_installed')()
+	end
+
+	if settings.current.automatic_installation then
+		require('mason-nvim-dap.automatic_installation')()
+	end
+
+	if settings.current.handlers then
+		setup_handlers(settings.current.handlers)
+	end
+
+	require('mason-nvim-dap.api.command')
+end
+
+---@return string[]
+function M.get_installed_sources()
+	local Optional = require('mason-core.optional')
+	local registry = require('mason-registry')
+	local source_mappings = require('mason-nvim-dap.mappings.source')
+
+	return _.filter_map(function(pkg_name)
+		return Optional.of_nilable(source_mappings.package_to_nvim_dap[pkg_name])
+	end, registry.get_installed_package_names())
+end
+
 ---Get a list of available sources in mason-registry
 ---@param filter { filetype: string | string[] }?: (optional) Used to filter the list of source names.
 --- The available keys are
@@ -97,10 +112,6 @@ function M.get_available_sources(filter)
 	local Optional = require('mason-core.optional')
 	filter = filter or {}
 	local predicates = {}
-
-	-- if filter.filetype then
-	-- 	table.insert(predicates, is_source_in_filetype(filter.filetype))
-	-- end
 
 	return _.filter_map(function(pkg_name)
 		return Optional.of_nilable(source_mappings.package_to_nvim_dap[pkg_name]):map(function(source_name)

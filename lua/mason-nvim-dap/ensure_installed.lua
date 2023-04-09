@@ -13,7 +13,7 @@ local function resolve_package(nvim_dap_adapter_name)
 	end)
 end
 
-return function()
+local function ensure_installed()
 	local Package = require('mason-core.package')
 	for _, source_identifier in ipairs(settings.current.ensure_installed) do
 		local source_name, version = Package.Parse(source_identifier)
@@ -36,4 +36,12 @@ return function()
 			end
 		)
 	end
+end
+
+if registry.refresh then
+	return function()
+		registry.refresh(vim.schedule_wrap(ensure_installed))
+	end
+else
+	return ensure_installed
 end
