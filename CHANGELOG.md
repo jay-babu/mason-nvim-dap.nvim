@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.2...v2.0.0) (2023-04-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* 2.0 ([#59](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/59))
+
+### Features
+
+* 2.0 ([#59](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/59)) ([785265d](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/785265d9c92f7ce951bd6fe6e9675360fd3e86f8))
+
 ## [1.2.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.1...v1.2.2) (2023-03-31)
 
 
