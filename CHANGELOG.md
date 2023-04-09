@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.0...v2.0.1) (2023-04-09)
+
+
+### Bug Fixes
+
+* check if bash-debug-adapter is available then get its data ([#60](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/60)) ([b3cf65e](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/b3cf65e354986775279d41486748a7a35e6965af))
+
 ## [2.0.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v1.2.2...v2.0.0) (2023-04-09)
 
 
