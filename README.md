@@ -143,9 +143,11 @@ require("mason-nvim-dap").setup({
 
 # Handlers usage
 
-The `handlers` table provides a dynamic way of setting up sources and any other needed logic, It can also do that during runtime.
+The `handlers` table provides a dynamic way of setting up sources and any other logic needed; it can also do that during runtime.
+To override the fallback handler put your custom one as first list element in the table.
+To override any other handler pass your custom function to the respective key.
+Handler functions take one argument - the default config table, which you customize to your liking:
 
-The config table passed to each hander contains the below items.
 ```lua
 local config = {
 	name -- adapter name
@@ -156,6 +158,8 @@ local config = {
 	filetypes -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/filetypes.lua
 }
 ```
+
+Note, especially **if you are migrating from setup_handlers()**, that you have to call `require('mason-nvim-dap').default_setup(config)` with your customized config table in all your handler overrides!
 
 ```lua
 require ('mason-nvim-dap').setup({
@@ -176,7 +180,7 @@ require ('mason-nvim-dap').setup({
 		            "debugpy.adapter",
 	            },
             }
-            require('mason-nvim-dap').default_setup(config)
+            require('mason-nvim-dap').default_setup(config) -- don't forget this!
         end,
     },
 })
