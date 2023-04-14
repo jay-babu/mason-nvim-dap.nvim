@@ -58,15 +58,6 @@ use {
 }
 ```
 
-## vim-plug
-
-```vim
-Plug 'williamboman/mason.nvim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'jay-babu/mason-nvim-dap.nvim'
-```
-
-
 # Setup
 
 It's important that you set up the plugins in the following order:
@@ -127,21 +118,7 @@ local DEFAULT_SETTINGS = {
 }
 ```
 
-# Automatic Setup Usage
-
-Automatic Setup is a need feature that removes the need to configure `dap` for supported adapters.
-Adapters found installed in `mason` will automatically be setup for dap.
-
-## Example Config
-
-```lua
-require("mason").setup()
-require("mason-nvim-dap").setup({
-    automatic_setup = true,
-})
-```
-
-# Handlers usage
+# Handlers usage (Automatic Setup)
 
 The `handlers` table provides a dynamic way of setting up sources and any other logic needed; it can also do that during runtime.
 To override the fallback handler put your custom one as first list element in the table.
@@ -160,6 +137,17 @@ local config = {
 ```
 
 Note, especially **if you are migrating from setup_handlers()**, that you have to call `require('mason-nvim-dap').default_setup(config)` with your customized config table in all your handler overrides!
+
+### Basic Customization
+
+```lua
+require ('mason-nvim-dap').setup({
+    ensure_installed = {'stylua', 'jq'},
+    handlers = {}, -- sets up dap in the predefined manner
+})
+```
+
+### Advanced Customization
 
 ```lua
 require ('mason-nvim-dap').setup({
