@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.1...v2.0.2) (2023-04-19)
+
+
+### Performance Improvements
+
+* Lazily require adapter mappings ([#70](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/70)) ([9816e2a](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/9816e2aa07872636018dc501753c119943c592f7))
+
 ## [2.0.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.0...v2.0.1) (2023-04-09)
 
 
