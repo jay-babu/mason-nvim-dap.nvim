@@ -20,27 +20,29 @@ end
 ---<
 ---This should be updated if files with adapter mappings are added or removed
 ---from 'lua/mason-nvim-dap/mappings/adapters/'.
-local OWN_MAPS = Set {
-	'bash',
-	'chrome',
-	'codelldb',
-	'coreclr',
-	'cppdbg',
-	'dart',
-	'delve',
-	'firefox',
-	'kotlin',
-	'mix_task',
-	'node2',
-	'php',
-	'python',
-}
+local OWN_MAPS = Set({
+	"bash",
+	"chrome",
+	"codelldb",
+	"coreclr",
+	"cppdbg",
+	"dart",
+	"delve",
+	"firefox",
+	"kotlin",
+	"mix_task",
+	"node2",
+	"php",
+	"python",
+})
 
 local META = {}
 function META.__index(table, key)
-	if not OWN_MAPS[key] then return nil end
+	if not OWN_MAPS[key] then
+		return nil
+	end
 
-	local adapter = require('mason-nvim-dap.mappings.adapters.' .. key)
+	local adapter = require("mason-nvim-dap.mappings.adapters." .. key)
 	table[key] = adapter
 	return adapter
 end
