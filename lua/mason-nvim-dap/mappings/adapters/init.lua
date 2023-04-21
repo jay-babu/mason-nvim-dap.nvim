@@ -18,6 +18,8 @@ end
 --->lua
 ---	require('mason-nvim-dap.mappings.adapters.chrome')
 ---<
+---This should be updated if files with adapter mappings are added or removed
+---from 'lua/mason-nvim-dap/mappings/adapters/'.
 local OWN_MAPS = Set {
 	'bash',
 	'chrome',
