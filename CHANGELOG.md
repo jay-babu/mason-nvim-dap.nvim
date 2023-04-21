@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.2...v2.0.3) (2023-04-21)
+
+
+### Reverts
+
+* [#74](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/74): Revert adapter breaking changes ([#75](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/75)) ([b874576](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/b874576d00be1dd25e5e9b375d9cd31718808583))
+
 ## [2.0.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.0...v2.0.1) (2023-04-09)
 
 
