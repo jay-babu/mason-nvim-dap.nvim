@@ -6,10 +6,8 @@ local _ = require('mason-core.functional')
 --@async
 --@param user_args string[]: The arguments, as provided by the user.
 local function parse_packages_from_user_args(user_args)
-	local registry = require('mason-registry')
 	local Package = require('mason-core.package')
 	local source_mappings = require('mason-nvim-dap.mappings.source')
-	local language_mappings = require('mason.mappings.language')
 
 	return _.filter_map(function(source_specifier)
 		local source_name, version = Package.Parse(source_specifier)
