@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.2...v2.0.3) (2023-04-23)
+
+
+### Bug Fixes
+
+* pcall return values order ([#82](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/82)) ([6bbb57b](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/6bbb57b9f9750c5ab8d8145a47eeb5192d456a48))
+
 ## [2.0.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.1...v2.0.2) (2023-04-22)
 
 
