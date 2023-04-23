@@ -4,7 +4,7 @@ local M = {}
 
 local META = {}
 function META.__index(table, key)
-	local adapter, ok = pcall(require, 'mason-nvim-dap.mappings.adapters.' .. key)
+	local ok, adapter = pcall(require, 'mason-nvim-dap.mappings.adapters.' .. key)
 	if not ok then
 		return nil
 	end
