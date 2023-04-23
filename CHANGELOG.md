@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.4](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.3...v2.0.4) (2023-04-23)
+
+
+### Bug Fixes
+
+* remove not used language_mappings defition ([#84](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/84)) ([9512a88](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/9512a88cc96f1c1d1e5dc56e3fd57e669d107bf4))
+
 ## [2.0.3](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.2...v2.0.3) (2023-04-23)
 
 
