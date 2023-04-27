@@ -238,20 +238,6 @@ M.dart = {
 	},
 }
 
-local function stack_path()
-	local stack_path = ''
-	-- require('mason-registry').has_package('haskell=debug-adapter')
-	if
-			require('mason-registry').has_package('haskell-debug-adapter')
-			and require('mason-registry').get_package('haskell-debug-adapter'):is_installed()
-	then
-		-- get stack_path executable
-		stack_path = require('mason-registry').get_package('haskell-debug-adapter'):get_install_path() .. '/stack'
-	end
-
-	return stack_path
-end
-
 M.haskell = {
 	{
 		type = 'haskell',
@@ -266,9 +252,7 @@ M.haskell = {
 		ghciPrompt = 'λ: ',
 		-- Adjust the prompt to the prompt you see when you invoke the stack ghci command below
 		ghciInitialPrompt = 'λ: ',
-		-- even if the stack_path is invalid, we have the fallback of a user having ghci in $PATH
-		ghciCmd = stack_path()
-				.. 'ghci --test --no-load --no-build --main-is TARGET --ghci-options -fprint-evld-with-show',
+		ghciCmd = 'stack ghci --test --no-load --no-build --main-is TARGET --ghci-options -fprint-evld-with-show',
 	},
 }
 
