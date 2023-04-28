@@ -29,11 +29,11 @@ M.delve = {
 
 local BASHDB_DIR = ''
 if
-		require('mason-registry').has_package('bash-debug-adapter')
-		and require('mason-registry').get_package('bash-debug-adapter'):is_installed()
+	require('mason-registry').has_package('bash-debug-adapter')
+	and require('mason-registry').get_package('bash-debug-adapter'):is_installed()
 then
 	BASHDB_DIR = require('mason-registry').get_package('bash-debug-adapter'):get_install_path()
-			.. '/extension/bashdb_dir'
+		.. '/extension/bashdb_dir'
 end
 
 M.bash = {
