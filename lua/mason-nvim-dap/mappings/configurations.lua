@@ -105,7 +105,6 @@ M.chrome = {
 		name = 'Chrome: Debug',
 		type = 'chrome',
 		request = 'attach',
-
 		program = '${file}',
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
@@ -120,7 +119,6 @@ M.firefox = {
 		name = 'Firefox: Debug',
 		type = 'firefox',
 		request = 'launch',
-
 		reAttach = true,
 		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
@@ -237,6 +235,24 @@ M.dart = {
 		flutterSdkPath = flutter_path(),
 		program = '${workspaceFolder}/lib/main.dart',
 		cwd = '${workspaceFolder}',
+	},
+}
+
+M.haskell = {
+	{
+		type = 'haskell',
+		request = 'launch',
+		name = 'Debug',
+		workspace = '${workspaceFolder}',
+		startup = '${file}',
+		stopOnEntry = true,
+		logFile = vim.fn.stdpath('data') .. '/haskell-dap.log',
+		logLevel = 'WARNING',
+		ghciEnv = vim.empty_dict(),
+		ghciPrompt = 'λ: ',
+		-- Adjust the prompt to the prompt you see when you invoke the stack ghci command below
+		ghciInitialPrompt = 'λ: ',
+		ghciCmd = 'stack ghci --test --no-load --no-build --main-is TARGET --ghci-options -fprint-evld-with-show',
 	},
 }
 
