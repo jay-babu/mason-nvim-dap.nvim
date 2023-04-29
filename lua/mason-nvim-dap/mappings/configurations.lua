@@ -29,11 +29,11 @@ M.delve = {
 
 local BASHDB_DIR = ''
 if
-	require('mason-registry').has_package('bash-debug-adapter')
-	and require('mason-registry').get_package('bash-debug-adapter'):is_installed()
+		require('mason-registry').has_package('bash-debug-adapter')
+		and require('mason-registry').get_package('bash-debug-adapter'):is_installed()
 then
 	BASHDB_DIR = require('mason-registry').get_package('bash-debug-adapter'):get_install_path()
-		.. '/extension/bashdb_dir'
+			.. '/extension/bashdb_dir'
 end
 
 M.bash = {
@@ -249,9 +249,9 @@ M.haskell = {
 		logFile = vim.fn.stdpath('data') .. '/haskell-dap.log',
 		logLevel = 'WARNING',
 		ghciEnv = vim.empty_dict(),
-		ghciPrompt = 'λ: ',
+		ghciPrompt = 'ghci>',
 		-- Adjust the prompt to the prompt you see when you invoke the stack ghci command below
-		ghciInitialPrompt = 'λ: ',
+		ghciInitialPrompt = 'ghci>',
 		ghciCmd = 'stack ghci --test --no-load --no-build --main-is TARGET --ghci-options -fprint-evld-with-show',
 	},
 }
