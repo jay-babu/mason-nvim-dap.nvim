@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.4...v2.1.0) (2023-05-01)
+
+
+### Features
+
+* Add haskell to list of supported debug adapters ([#87](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/87)) ([7c18898](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/7c18898e3a8ed369bfa0cfcc4be7bccdf5d13ea7))
+
+
+### Bug Fixes
+
+* changed default prompt to be the fresh-installed stack version ([#90](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/90)) ([f0a476f](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/f0a476fba64d43a66d14fc33e284cbdc9d87fd97))
+* use ghci-dap and -ignore-dot-ghci ([#91](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/91)) ([6fe5eac](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/6fe5eac6db65fdbad68bf638dea0a849ccb63fd7))
+
 ## [2.0.4](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.3...v2.0.4) (2023-04-23)
 
 
