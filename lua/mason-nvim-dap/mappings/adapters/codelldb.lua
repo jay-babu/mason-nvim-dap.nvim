@@ -8,7 +8,7 @@ local M = {
 }
 
 if vim.fn.has('win32') == 1 then
-	M.codelldb.executable.detached = false
+	M.executable.detached = false
 end
 
 return M
