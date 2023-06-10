@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.1.0...v2.1.1) (2023-06-10)
+
+
+### Bug Fixes
+
+* Fixed codelldb and cppdbg failing to setup on windows. ([#96](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/96)) ([961e9e8](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/961e9e867f6c4a028af6495798b505b749975f33))
+
 ## [2.1.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.0.4...v2.1.0) (2023-05-01)
 
 
