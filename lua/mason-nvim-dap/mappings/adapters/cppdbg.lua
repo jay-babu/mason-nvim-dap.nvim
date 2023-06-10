@@ -4,7 +4,7 @@ local M = {
 	command = vim.fn.exepath('OpenDebugAD7'),
 }
 if vim.fn.has('win32') == 1 then
-	M.cppdbg.options = {
+	M.options = {
 		detached = false,
 	}
 end
