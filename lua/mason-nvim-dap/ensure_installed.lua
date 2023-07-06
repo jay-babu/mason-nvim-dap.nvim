@@ -24,6 +24,7 @@ local function ensure_installed()
 					vim.notify(('[mason-nvim-dap] installing %s'):format(pkg.name))
 					pkg:install({
 						version = version,
+						debug = true,
 					}):once(
 						'closed',
 						vim.schedule_wrap(function()
