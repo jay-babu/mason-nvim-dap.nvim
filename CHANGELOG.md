@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.1.1...v2.2.0) (2023-10-19)
+
+
+### Features
+
+* Enable the codelldb and cppdbg adapters to debug swift applications. ([#108](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/108)) ([6148b51](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/6148b51db945b55b3b725da39eaea6441e59dff8))
+* Enable Zig debugging on codelldb ([#111](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/111)) ([1e5cdf1](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/1e5cdf182be5e4b7082fea96e82de380844bd593))
+
 ## [2.1.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.1.0...v2.1.1) (2023-06-10)
 
 
