@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.0...v2.2.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* debugpy path on Windows ([#115](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/115)) ([ab613d8](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/ab613d8233ad07d86f423b205fa3ec0db95b3b45))
+
 ## [2.2.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.1.1...v2.2.0) (2023-10-19)
 
 
