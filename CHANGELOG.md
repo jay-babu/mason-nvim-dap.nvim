@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.1...v2.2.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* Use integratedTerminal for Python and CodeLLDB ([#117](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/117)) ([9e82ded](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/9e82ded0515186edd4f69e4ce6b1a5f1b55b47e9))
+
 ## [2.2.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.0...v2.2.1) (2023-11-22)
 
 
