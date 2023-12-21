@@ -66,6 +66,7 @@ M.python = {
 		pythonPath = venv_path
 				and ((vim.fn.has('win32') == 1 and venv_path .. '/Scripts/python') or venv_path .. '/bin/python')
 			or nil,
+		console = 'integratedTerminal',
 	},
 }
 
@@ -80,6 +81,7 @@ M.codelldb = {
 		cwd = '${workspaceFolder}',
 		stopOnEntry = false,
 		args = {},
+		console = 'integratedTerminal',
 	},
 }
 
