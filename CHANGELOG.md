@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.3](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.2...v2.2.3) (2024-03-02)
+
+
+### Bug Fixes
+
+* Start Delve debug in project mode, not file ([#122](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/122)) ([67210c0](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/67210c0e775adec55de9826b038e8b62de554afc))
+
 ## [2.2.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.1...v2.2.2) (2023-12-21)
 
 
