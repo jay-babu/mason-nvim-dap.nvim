@@ -8,7 +8,7 @@ M.delve = {
 		type = 'delve',
 		name = 'Delve: Debug',
 		request = 'launch',
-		program = '${file}',
+		program = '${workspaceFolder}',
 	},
 	{
 		type = 'delve',
