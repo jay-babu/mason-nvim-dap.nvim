@@ -263,4 +263,37 @@ M.haskell = {
 	},
 }
 
+M.pwa_node = {
+	{
+		type = 'pwa_node',
+		name = 'Launch',
+		request = 'launch',
+		trace = true,
+		program = '${workspaceFolder}/bin',
+		cwd = '${workspaceFolder}',
+		rootPath = '${workspaceFolder}',
+		skipFiles = { '<node_internals>/**/*.js' },
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/**',
+			'!**/node_modules/**',
+		},
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
+	{
+		type = 'pwa_node',
+		name = 'Attach To Process',
+		request = 'attach',
+		cwd = '${workspaceFolder}/src',
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/**',
+			'!**/node_modules/**',
+		},
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+		processId = require('dap.utils').pick_process,
+		port = 9229,
+	},
+}
+
 return M
