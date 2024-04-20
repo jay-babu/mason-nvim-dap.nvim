@@ -263,9 +263,9 @@ M.haskell = {
 	},
 }
 
-M.pwa_node = {
+M['pwa-node'] = {
 	{
-		type = 'pwa_node',
+		type = 'pwa-node',
 		name = 'Launch',
 		request = 'launch',
 		trace = true,
@@ -281,7 +281,7 @@ M.pwa_node = {
 		console = 'integratedTerminal',
 	},
 	{
-		type = 'pwa_node',
+		type = 'pwa-node',
 		name = 'Attach To Process',
 		request = 'attach',
 		cwd = '${workspaceFolder}/src',

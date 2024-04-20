@@ -12,7 +12,6 @@ M.nvim_dap_to_package = {
 	['firefox'] = 'firefox-debug-adapter',
 	['php'] = 'php-debug-adapter',
 	['coreclr'] = 'netcoredbg',
-	['pwa_node'] = 'js-debug-adapter',
 	['codelldb'] = 'codelldb',
 	['bash'] = 'bash-debug-adapter',
 	['javadbg'] = 'java-debug-adapter',
@@ -23,6 +22,7 @@ M.nvim_dap_to_package = {
 	['kotlin'] = 'kotlin-debug-adapter',
 	['dart'] = 'dart-debug-adapter',
 	['haskell'] = 'haskell-debug-adapter',
+	['pwa-node'] = 'js-debug-adapter',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)

@@ -15,6 +15,7 @@ local M = {
 	['node2'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 	['php'] = { 'php' },
 	['python'] = { 'python' },
+	['pwa-node'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 	['haskell'] = { 'haskell' },
 }
 
