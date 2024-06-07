@@ -87,6 +87,10 @@ function M.setup(config)
 		setup_handlers(settings.current.handlers)
 	end
 
+	local dap_vscode = require('dap.ext.vscode')
+	dap_vscode.type_to_filetypes =
+		vim.tbl_deep_extend('force', dap_vscode.type_to_filetypes, require('mason-nvim-dap.mappings.filetypes'))
+
 	require('mason-nvim-dap.api.command')
 end
 
