@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.2...v2.3.0) (2024-06-07)
+
+
+### Features
+
+* automatically configure the vscode extension in `nvim-dap` ([#129](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/129)) ([a046867](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/a04686728284ce378a7f2891362c5df5fadf3658))
+
+
+### Bug Fixes
+
+* Start Delve debug in project mode, not file ([#122](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/122)) ([67210c0](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/67210c0e775adec55de9826b038e8b62de554afc))
+
 ## [2.2.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.1...v2.2.2) (2023-12-21)
 
 
