@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.3.0...v2.3.1) (2024-06-30)
+
+
+### Bug Fixes
+
+* **netcoredbg:** failing to start on Windows ([#133](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/133)) ([2bff39c](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/2bff39c891f89fb58096ea67ef404db305a9477b))
+
 ## [2.3.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.2.2...v2.3.0) (2024-06-07)
 
 
