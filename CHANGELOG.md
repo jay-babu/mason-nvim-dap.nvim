@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.3.1...v2.4.0) (2024-08-04)
+
+
+### Features
+
+* Add erlang to list of supported debug adapters ([#135](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/135)) ([aa82cbe](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/aa82cbe2e3e9faaecdf78920428913e63e855856))
+
 ## [2.3.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.3.0...v2.3.1) (2024-06-30)
 
 
