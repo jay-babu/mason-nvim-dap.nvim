@@ -23,6 +23,7 @@ M.nvim_dap_to_package = {
 	['kotlin'] = 'kotlin-debug-adapter',
 	['dart'] = 'dart-debug-adapter',
 	['haskell'] = 'haskell-debug-adapter',
+	['erlang'] = 'erlang-debugger',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)

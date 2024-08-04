@@ -16,6 +16,7 @@ local M = {
 	['php'] = { 'php' },
 	['python'] = { 'python' },
 	['haskell'] = { 'haskell' },
+	['erlang'] = { 'erlang' },
 }
 
 return M
