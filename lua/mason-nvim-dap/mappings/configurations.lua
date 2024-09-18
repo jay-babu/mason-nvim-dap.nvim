@@ -12,6 +12,15 @@ M.delve = {
 	},
 	{
 		type = 'delve',
+		name = 'Delve: Debug (Arguments)',
+		request = 'launch',
+		program = '${workspaceFolder}',
+		args = function()
+			return vim.split(vim.fn.input('Args: '), ' ')
+		end,
+	},
+	{
+		type = 'delve',
 		name = 'Delve: Debug test', -- configuration for debugging test files
 		request = 'launch',
 		mode = 'test',
