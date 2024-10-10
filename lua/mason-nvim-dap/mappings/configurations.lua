@@ -136,7 +136,7 @@ M.php = {
 		type = 'php',
 		request = 'launch',
 		name = 'PHP: Listen for Xdebug',
-		port = 9000,
+		port = 9003,
 	},
 }
 
