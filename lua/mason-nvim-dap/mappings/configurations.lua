@@ -147,7 +147,19 @@ M.pwa_node = {
 		cwd = '${workspaceFolder}',
 	},
 }
+M.pwa_chrome = {
+	{
+		name = 'Chrome: Debug',
+		type = 'pwa-chrome',
+		request = 'attach',
 		program = '${file}',
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = 'inspector',
+		port = 9222,
+		webRoot = '${workspaceFolder}',
+	},
+}
 M.php = {
 	{
 		type = 'php',
