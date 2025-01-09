@@ -130,7 +130,6 @@ M.firefox = {
 	},
 }
 
--- TODO: add debug types for js debug adapter
 M.pwa_node = {
 	{
 		name = 'Node: Debug',
