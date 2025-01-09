@@ -147,6 +147,7 @@ M.pwa_node = {
 		cwd = '${workspaceFolder}',
 	},
 }
+
 M.pwa_chrome = {
 	{
 		name = 'Chrome: Debug',
@@ -189,6 +190,21 @@ M.node_terminal = {
 		outFiles = { '${workspaceFolder}/dist/**/*.js' },
 	},
 }
+
+M.pwa_extensionhost = {
+	{
+		name = 'Extension Host: Debug',
+		type = 'pwa-extensionHost',
+		request = 'launch',
+		args = { '--extensionDevelopmentPath=${workspaceFolder}' },
+		cwd = '${workspaceFolder}',
+		runtimeExecutable = vim.fn.exepath('code'),
+		outFiles = { '${workspaceFolder}/out/**/*.js' },
+		sourceMaps = true,
+		protocol = 'inspector',
+	},
+}
+
 M.php = {
 	{
 		type = 'php',
