@@ -130,6 +130,7 @@ M.firefox = {
 	},
 }
 
+-- TODO: add debug types for js debug adapter
 M.pwa_node = {
 	{
 		name = 'Node: Debug',
@@ -190,7 +191,7 @@ M.node_terminal = {
 	},
 }
 
-M.pwa_extensionhost = {
+M.pwa_extensionHost = {
 	{
 		name = 'Extension Host: Debug',
 		type = 'pwa-extensionHost',
