@@ -110,7 +110,6 @@ M.chrome = {
 		name = 'Launch Chrome Against Host',
 		type = 'chrome',
 		request = 'launch',
-
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
 		url = 'http://localhost:3000',
@@ -168,13 +167,12 @@ M.pwa_msedge = {
 	},
 }
 
-M.node_terminal = {
+M.pwa_node_terminal = {
 	{
 		name = 'Node: Terminal Debug',
 		type = 'pwa-terminal',
 		request = 'launch',
 		cwd = '${workspaceFolder}',
-		runtimeExecutable = 'node',
 		console = 'integratedTerminal',
 		skipFiles = { '<node_internals>/**' },
 		sourceMaps = true,
