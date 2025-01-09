@@ -107,15 +107,15 @@ M.node2 = {
 
 M.chrome = {
 	{
-		name = 'Chrome: Debug',
+		name = 'Launch Chrome Against Host',
 		type = 'chrome',
-		request = 'attach',
-		program = '${file}',
+		request = 'launch',
+
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
-		protocol = 'inspector',
-		port = 9222,
+		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
+		chromeExecutable = vim.fn.exepath('chrome'),
 	},
 }
 
