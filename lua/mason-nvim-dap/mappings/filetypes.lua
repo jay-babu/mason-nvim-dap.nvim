@@ -21,6 +21,7 @@ local M = {
   ['pwa-chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
   ['pwa-msedge'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
   ['pwa-terminal'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
+  ['pwa-extensionHost'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 
 }
 
