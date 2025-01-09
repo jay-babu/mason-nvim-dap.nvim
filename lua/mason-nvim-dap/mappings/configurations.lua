@@ -131,6 +131,14 @@ M.firefox = {
 	},
 }
 
+M.pwa_node = {
+	{
+		type = 'pwa-node',
+		request = 'launch',
+		name = 'Launch file',
+		program = '${file}',
+		cwd = '${workspaceFolder}',
+	},
 M.php = {
 	{
 		type = 'php',
