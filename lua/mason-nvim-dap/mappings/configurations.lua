@@ -115,7 +115,6 @@ M.chrome = {
 		sourceMaps = true,
 		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
-		chromeExecutable = vim.fn.exepath('chrome'),
 	},
 }
 
