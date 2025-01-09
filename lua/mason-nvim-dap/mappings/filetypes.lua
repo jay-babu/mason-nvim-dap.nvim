@@ -17,6 +17,8 @@ local M = {
   ['python'] = { 'python' },
   ['haskell'] = { 'haskell' },
   ['erlang'] = { 'erlang' },
+  ['pwa-node'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
+
 }
 
 return M
