@@ -149,14 +149,10 @@ M.pwa_node = {
 
 M.pwa_chrome = {
 	{
-		name = 'Chrome: Debug',
-		type = 'pwa-chrome',
-		request = 'attach',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
-		port = 9222,
+		type = 'chrome',
+		request = 'launch',
+		name = 'Launch Chrome against localhost',
+		url = 'http://localhost:3000/',
 		webRoot = '${workspaceFolder}',
 	},
 }
