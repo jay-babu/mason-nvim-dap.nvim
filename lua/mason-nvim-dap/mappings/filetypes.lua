@@ -18,6 +18,7 @@ local M = {
   ['haskell'] = { 'haskell' },
   ['erlang'] = { 'erlang' },
   ['pwa-node'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
+  ['pwa-chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 
 }
 
