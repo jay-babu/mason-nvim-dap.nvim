@@ -159,16 +159,12 @@ M.pwa_chrome = {
 
 M.pwa_msedge = {
 	{
-		name = 'Edge: Debug',
 		type = 'pwa-msedge',
-		request = 'attach',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
-		port = 9222,
-		webRoot = '${workspaceFolder}',
-		msedgeExecutable = vim.fn.exepath('msedge'),
+		request = 'launch',
+		name = 'Launch Edge against localhost',
+		url = 'http://localhost:5000',
+		webRoot = '${workspaceFolder}/src',
+		useWebView = true,
 	},
 }
 
