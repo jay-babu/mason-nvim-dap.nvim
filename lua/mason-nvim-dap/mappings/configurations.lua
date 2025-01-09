@@ -129,7 +129,7 @@ M.firefox = {
   },
 }
 
-M.pwa_node = {
+M.js = {
   {
     name = 'Node: Debug',
     type = 'pwa-node',
@@ -144,54 +144,50 @@ M.pwa_node = {
     processId = require('dap.utils').pick_process,
     cwd = '${workspaceFolder}',
   },
-}
-
-M.pwa_chrome = {
   {
-    type = 'chrome',
-    request = 'launch',
-    name = 'Launch Chrome against localhost',
-    url = 'http://localhost:3000/',
-    webRoot = '${workspaceFolder}',
+    {
+      type = 'chrome',
+      request = 'launch',
+      name = 'Launch Chrome against localhost',
+      url = 'http://localhost:3000/',
+      webRoot = '${workspaceFolder}',
+    },
   },
-}
-
-M.pwa_msedge = {
   {
-    type = 'pwa-msedge',
-    request = 'launch',
-    name = 'Launch Edge against localhost',
-    url = 'http://localhost:5000',
-    webRoot = '${workspaceFolder}/src',
-    useWebView = true,
+    {
+      type = 'pwa-msedge',
+      request = 'launch',
+      name = 'Launch Edge against localhost',
+      url = 'http://localhost:5000',
+      webRoot = '${workspaceFolder}/src',
+      useWebView = true,
+    },
   },
-}
-
-M.pwa_node_terminal = {
   {
-    name = 'Node: Terminal Debug',
-    type = 'pwa-terminal',
-    request = 'launch',
-    cwd = '${workspaceFolder}',
-    console = 'integratedTerminal',
-    skipFiles = { '<node_internals>/**' },
-    sourceMaps = true,
-    outFiles = { '${workspaceFolder}/dist/**/*.js' },
+    {
+      name = 'Node: Terminal Debug',
+      type = 'pwa-terminal',
+      request = 'launch',
+      cwd = '${workspaceFolder}',
+      console = 'integratedTerminal',
+      skipFiles = { '<node_internals>/**' },
+      sourceMaps = true,
+      outFiles = { '${workspaceFolder}/dist/**/*.js' },
+    },
   },
-}
-
-M.pwa_extensionHost = {
   {
-    name = 'Extension Host: Debug',
-    type = 'pwa-extensionHost',
-    request = 'launch',
-    args = { '--extensionDevelopmentPath=${workspaceFolder}' },
-    cwd = '${workspaceFolder}',
-    runtimeExecutable = vim.fn.exepath('code'),
-    outFiles = { '${workspaceFolder}/out/**/*.js' },
-    sourceMaps = true,
-    protocol = 'inspector',
-  },
+    {
+      name = 'Extension Host: Debug',
+      type = 'pwa-extensionHost',
+      request = 'launch',
+      args = { '--extensionDevelopmentPath=${workspaceFolder}' },
+      cwd = '${workspaceFolder}',
+      runtimeExecutable = vim.fn.exepath('code'),
+      outFiles = { '${workspaceFolder}/out/**/*.js' },
+      sourceMaps = true,
+      protocol = 'inspector',
+    },
+  }
 }
 
 M.php = {
