@@ -19,6 +19,7 @@ local M = {
   ['erlang'] = { 'erlang' },
   ['pwa-node'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
   ['pwa-chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
+  ['pwa-msedge'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 
 }
 
