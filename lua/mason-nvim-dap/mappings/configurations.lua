@@ -160,6 +160,21 @@ M.pwa_chrome = {
 		webRoot = '${workspaceFolder}',
 	},
 }
+
+M.pwa_msedge = {
+	{
+		name = 'Edge: Debug',
+		type = 'pwa-msedge',
+		request = 'attach',
+		program = '${file}',
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = 'inspector',
+		port = 9222,
+		webRoot = '${workspaceFolder}',
+		msedgeExecutable = vim.fn.exepath('msedge'),
+	},
+}
 M.php = {
 	{
 		type = 'php',
