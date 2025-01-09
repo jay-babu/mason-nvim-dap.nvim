@@ -175,6 +175,20 @@ M.pwa_msedge = {
 		msedgeExecutable = vim.fn.exepath('msedge'),
 	},
 }
+
+M.node_terminal = {
+	{
+		name = 'Node: Terminal Debug',
+		type = 'pwa-terminal',
+		request = 'launch',
+		cwd = '${workspaceFolder}',
+		runtimeExecutable = 'node',
+		console = 'integratedTerminal',
+		skipFiles = { '<node_internals>/**' },
+		sourceMaps = true,
+		outFiles = { '${workspaceFolder}/dist/**/*.js' },
+	},
+}
 M.php = {
 	{
 		type = 'php',
