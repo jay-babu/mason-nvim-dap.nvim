@@ -27,6 +27,7 @@ M.nvim_dap_to_package = {
   ['pwa_node'] = 'js-debug-adapter',
   ['pwa_chrome'] = 'js-debug-adapter',
   ['pwa_msedge'] = 'js-debug-adapter',
+  ['node_terminal'] = 'js-debug-adapter',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)
