@@ -279,9 +279,25 @@ M.js = {
 		internalConsoleOptions = 'neverOpen',
 	},
 	{
+
+		name = 'Jest: Debug Tests 2',
 		type = 'js',
 		request = 'launch',
-		name = 'Debug Mocha Tests',
+		program = '${workspaceFolder}/node_modules/jest/bin/jest.js',
+		arg = {
+			'_verbose',
+			'_runInBand',
+			'_forceExit',
+			'_config',
+			'jest-unit.config.json',
+			'${file}',
+		},
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		restart = true,
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
 		-- trace = true, -- include debugger info
 		runtimeExecutable = 'node',
 		runtimeArgs = {
