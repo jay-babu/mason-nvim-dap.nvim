@@ -119,7 +119,7 @@ M.chrome = {
 
 M.firefox = {
 	{
-		name = 'Firefox: Debug',
+		name = 'Firefox Debugger',
 		type = 'firefox',
 		request = 'launch',
 		reAttach = true,
@@ -137,6 +137,10 @@ M.js = {
 		program = '${ file }',
 		cwd = '${workspaceFolder}',
 		sourceMaps = true,
+		rootPath = '${workspaceFolder}',
+		skipFiles = { '<node_internals>/**' },
+		protocol = 'inspector',
+		console = 'integratedTerminal',
 	},
 	{
 		name = 'Attach',
