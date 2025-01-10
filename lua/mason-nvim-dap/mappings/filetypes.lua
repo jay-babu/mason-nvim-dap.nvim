@@ -18,11 +18,6 @@ local M = {
   ['python'] = { 'python' },
   ['haskell'] = { 'haskell' },
   ['erlang'] = { 'erlang' },
-  ['pwa_node'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
-  ['pwa_chrome'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
-  ['pwa_msedge'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
-  ['pwa_terminal'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
-  ['pwa_extensionHost'] = { 'javascriptreact', 'typescriptreact', 'typescript', 'javascript' },
 }
 
 return M
