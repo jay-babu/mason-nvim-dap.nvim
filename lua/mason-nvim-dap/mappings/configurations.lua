@@ -178,6 +178,15 @@ M.js = {
 		console = 'integratedTerminal',
 		skipFiles = { '<node_internals>/**', 'node_modules/**' },
 	},
+	{
+		name = 'Launch Test Current File (pwa-node with deno)',
+		type = 'js',
+		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		runtimeArgs = { 'test', '--inspect-brk', '--allow-all', '${file}' },
+		runtimeExecutable = 'deno',
+		attachSimplePort = 9229,
+	},
 		url = function()
 			local co = coroutine.running()
 			return coroutine.create(function()
