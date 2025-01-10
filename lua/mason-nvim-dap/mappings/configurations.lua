@@ -143,7 +143,7 @@ M.js = {
 		console = 'integratedTerminal',
 	},
 	{
-		name = 'Attach',
+		name = 'Attach to Node Process',
 		type = 'js',
 		request = 'attach',
 		processId = require('dap.utils').pick_process,
