@@ -270,6 +270,21 @@ M.pwa_msedge {
   },
 }
 
+M.pwa_terminal {
+  {
+    {
+      name = 'Node: Terminal Debug',
+      type = 'pwa-terminal',
+      request = 'launch',
+      cwd = '${workspaceFolder}',
+      console = 'integratedTerminal',
+      skipFiles = { '<node_internals>/**' },
+      sourceMaps = true,
+      outFiles = { '${workspaceFolder}/dist/**/*.js' },
+    },
+  },
+}
+
 M.php = {
   {
     type = 'php',
