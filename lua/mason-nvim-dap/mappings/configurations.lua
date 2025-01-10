@@ -1,6 +1,5 @@
 local settings = require('mason-nvim-dap.settings')
 
-local M = {}
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
 M.delve = {
@@ -209,7 +208,7 @@ M.js = {
 }
 
 
-M.pwa_node {
+M.pwa-node {
   {
     name = 'Launch Node',
     type = 'pwa-node',
@@ -228,7 +227,7 @@ M.pwa_node {
   },
 }
 
-M.pwa_chrome {
+M.pwa-chrome {
   {
     name = 'Launch & Debug Chrome',
     type = 'pwa-chrome',
@@ -257,7 +256,7 @@ M.pwa_chrome {
 
 }
 
-M.pwa_msedge {
+M.pwa-msedge {
   {
     {
       type = 'pwa-msedge',
@@ -270,7 +269,7 @@ M.pwa_msedge {
   },
 }
 
-M.pwa_terminal {
+M.pwa-terminal {
   {
     {
       name = 'Node: Terminal Debug',
@@ -285,7 +284,7 @@ M.pwa_terminal {
   },
 }
 
-M.pwa_extensionHost {
+M.pwa-terminal {
   {
     {
       name = 'Extension Host: Debug',
