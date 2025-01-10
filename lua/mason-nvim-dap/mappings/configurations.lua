@@ -285,6 +285,22 @@ M.pwa_terminal {
   },
 }
 
+M.pwa_extensionHost {
+  {
+    {
+      name = 'Extension Host: Debug',
+      type = 'pwa-extensionHost',
+      request = 'launch',
+      args = { '--extensionDevelopmentPath=${workspaceFolder}' },
+      cwd = '${workspaceFolder}',
+      runtimeExecutable = vim.fn.exepath('code'),
+      outFiles = { '${workspaceFolder}/out/**/*.js' },
+      sourceMaps = true,
+      protocol = 'inspector',
+    },
+  },
+}
+
 M.php = {
   {
     type = 'php',
