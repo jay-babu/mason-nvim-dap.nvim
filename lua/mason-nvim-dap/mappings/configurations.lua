@@ -298,6 +298,10 @@ M.js = {
 		protocol = 'inspector',
 		console = 'integratedTerminal',
 	},
+	{
+		name = 'Mocha: Debug Tests',
+		type = 'js',
+		request = 'launch',
 		-- trace = true, -- include debugger info
 		runtimeExecutable = 'node',
 		runtimeArgs = {
