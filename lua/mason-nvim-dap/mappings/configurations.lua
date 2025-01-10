@@ -208,7 +208,7 @@ M.js = {
 }
 
 
-M.pwa-node {
+M.pwa_node {
   {
     name = 'Launch Node',
     type = 'pwa-node',
@@ -227,7 +227,7 @@ M.pwa-node {
   },
 }
 
-M.pwa-chrome {
+M.pwa_chrome {
   {
     name = 'Launch & Debug Chrome',
     type = 'pwa-chrome',
@@ -256,7 +256,7 @@ M.pwa-chrome {
 
 }
 
-M.pwa-msedge {
+M.pwa_msedge {
   {
     {
       type = 'pwa-msedge',
@@ -269,7 +269,7 @@ M.pwa-msedge {
   },
 }
 
-M.pwa-terminal {
+M.pwa_terminal {
   {
     {
       name = 'Node: Terminal Debug',
@@ -284,7 +284,7 @@ M.pwa-terminal {
   },
 }
 
-M.pwa-terminal {
+M.pwa_extensionHost {
   {
     {
       name = 'Extension Host: Debug',
