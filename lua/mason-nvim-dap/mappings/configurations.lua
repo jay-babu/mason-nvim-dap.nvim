@@ -166,6 +166,18 @@ M.js = {
 			'!**/node_modules/**',
 		},
 	},
+	{
+		name = 'Launch Test Current File (pwa-node with vitest)',
+		type = 'js',
+		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+		args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
+		autoAttachChildProcesses = true,
+		smartStep = true,
+		console = 'integratedTerminal',
+		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+	},
 		url = function()
 			local co = coroutine.running()
 			return coroutine.create(function()
