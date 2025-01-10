@@ -210,7 +210,22 @@ M.js = {
 
 
 M.pwa_node {
-
+  {
+    name = 'Launch Node',
+    type = 'pwa-node',
+    request = 'launch',
+    program = '${ file }',
+    cwd = '${workspaceFolder}',
+    sourceMaps = true,
+  },
+  {
+    name = 'Attach',
+    type = 'pwa-node',
+    request = 'attach',
+    processId = require('dap.utils').pick_process,
+    cwd = '${workspaceFolder}',
+    sourceMaps = true,
+  },
 }
 
 M.pwa_chrome {
