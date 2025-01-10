@@ -187,6 +187,10 @@ M.js = {
 		runtimeExecutable = 'deno',
 		attachSimplePort = 9229,
 	},
+	{
+		name = 'Chrome: Launch && Debug Against localhost',
+		type = 'js',
+		request = 'launch',
 		url = function()
 			local co = coroutine.running()
 			return coroutine.create(function()
