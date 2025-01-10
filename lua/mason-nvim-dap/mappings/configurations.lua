@@ -264,7 +264,7 @@ M.js = {
 		},
 	},
 	{
-		name = 'Debug Jest Tests',
+		name = 'Jest: Debug Tests',
 		type = 'js',
 		request = 'launch',
 		-- trace = true, -- include debugger info
