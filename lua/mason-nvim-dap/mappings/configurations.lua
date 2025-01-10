@@ -308,6 +308,28 @@ M.js = {
 		console = 'integratedTerminal',
 		internalConsoleOptions = 'neverOpen',
 	},
+	{
+		name = 'Electron: Debug Main Process',
+		type = 'js',
+		request = 'launch',
+		program = '${workspaceFolder}/node_modules/.bin/electron',
+		args = {
+			'${workspaceFolder}/dist/index.js',
+		},
+		outFiles = {
+			'${workspaceFolder}/dist/*.js',
+		},
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/dist/**/*.js',
+			'${workspaceFolder}/dist/*.js',
+		},
+		rootPath = '${workspaceFolder}',
+		cwd = '${workspaceFolder}',
+		sourceMaps = true,
+		skipFiles = { '<node_internals>/**' },
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
 }
 
 M.php = {
