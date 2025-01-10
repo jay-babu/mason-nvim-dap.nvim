@@ -107,7 +107,7 @@ M.node2 = {
 
 M.chrome = {
 	{
-		name = 'Launch Chrome Against Host',
+		name = 'Chrome Debugger',
 		type = 'chrome',
 		request = 'launch',
 		cwd = vim.fn.getcwd(),
@@ -170,15 +170,6 @@ M.js = {
 		protocol = 'inspector',
 		sourceMaps = true,
 		userDataDir = false,
-	},
-	{
-		{
-			type = 'chrome',
-			request = 'launch',
-			name = 'Launch Chrome against localhost',
-			url = 'http://localhost:3000/',
-			webRoot = '${workspaceFolder}',
-		},
 	},
 	{
 		{
