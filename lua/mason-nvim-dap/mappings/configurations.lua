@@ -1,5 +1,6 @@
 local settings = require('mason-nvim-dap.settings')
 
+local M = {}
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
 M.delve = {
