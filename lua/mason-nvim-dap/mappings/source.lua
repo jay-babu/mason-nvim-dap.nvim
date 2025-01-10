@@ -12,7 +12,7 @@ M.nvim_dap_to_package = {
   ['firefox'] = 'firefox-debug-adapter',
   ['php'] = 'php-debug-adapter',
   ['coreclr'] = 'netcoredbg',
-  ['js'] = 'js-debug-adapter',
+  -- ['js'] = 'js-debug-adapter',
   ['codelldb'] = 'codelldb',
   ['bash'] = 'bash-debug-adapter',
   ['javadbg'] = 'java-debug-adapter',
@@ -24,6 +24,11 @@ M.nvim_dap_to_package = {
   ['dart'] = 'dart-debug-adapter',
   ['haskell'] = 'haskell-debug-adapter',
   ['erlang'] = 'erlang-debugger',
+  ['pwa_node'] = 'js-debug-adapter',
+  ['pwa_chrome'] = 'js-debug-adapter',
+  ['pwa_msedge'] = 'js-debug-adapter',
+  ['pwa_terminal'] = 'js-debug-adapter',
+  ['pwa_extensionHost'] = 'js-debug-adapter',
 }
 
 M.package_to_nvim_dap = _.invert(M.nvim_dap_to_package)
