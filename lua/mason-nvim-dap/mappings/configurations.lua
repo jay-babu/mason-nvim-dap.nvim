@@ -229,6 +229,31 @@ M.pwa_node {
 }
 
 M.pwa_chrome {
+  {
+    name = 'Launch & Debug Chrome',
+    type = 'pwa-chrome',
+    request = 'launch',
+    url = function()
+      local co = coroutine.running()
+      return coroutine.create(function()
+        vim.ui.input({
+          prompt = 'Enter URL: ',
+          default = 'https://localhost:3000',
+        }, function(url)
+          if url == nil or url == '' then
+            return
+          else
+            coroutine.resume(co, url)
+          end
+        end)
+      end)
+    end,
+    webRoot = '${workspaceFolder}',
+    skipFiles = { '<node_internals>/**/*.js' },
+    protocol = 'inspector',
+    sourceMaps = true,
+    userDataDir = false,
+  },
 
 }
 
