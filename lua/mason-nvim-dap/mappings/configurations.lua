@@ -257,6 +257,18 @@ M.pwa_chrome {
 
 }
 
+M.pwa_msedge {
+  {
+    {
+      type = 'pwa-msedge',
+      request = 'launch',
+      name = 'Launch Edge against localhost',
+      url = 'http://localhost:5000',
+      webRoot = '${workspaceFolder}/src',
+      useWebView = true,
+    },
+  },
+}
 
 M.php = {
   {
