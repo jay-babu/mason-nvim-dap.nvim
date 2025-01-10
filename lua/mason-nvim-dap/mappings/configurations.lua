@@ -151,9 +151,21 @@ M.js = {
 		sourceMaps = true,
 	},
 	{
-		name = 'Launch & Debug Chrome',
+		name = 'Launch Current File (pwa-node with ts-node)',
 		type = 'js',
 		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		runtimeArgs = { '--loader', 'ts-node/esm' },
+		runtimeExecutable = 'node',
+		args = { '${file}' },
+		sourceMaps = true,
+		protocol = 'inspector',
+		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/**',
+			'!**/node_modules/**',
+		},
+	},
 		url = function()
 			local co = coroutine.running()
 			return coroutine.create(function()
