@@ -213,55 +213,49 @@ M.js = {
 		userDataDir = false,
 	},
 	{
-		{
-			name = 'Edge: Launch && Debug Against localhost',
-			type = 'js',
-			request = 'launch',
-			url = function()
-				local co = coroutine.running()
-				return coroutine.create(function()
-					vim.ui.input({
-						prompt = 'Enter URL: ',
-						default = 'https://localhost:3000',
-					}, function(url)
-						if url == nil or url == '' then
-							return
-						else
-							coroutine.resume(co, url)
-						end
-					end)
+		name = 'Edge: Launch && Debug Against localhost',
+		type = 'js',
+		request = 'launch',
+		url = function()
+			local co = coroutine.running()
+			return coroutine.create(function()
+				vim.ui.input({
+					prompt = 'Enter URL: ',
+					default = 'https://localhost:3000',
+				}, function(url)
+					if url == nil or url == '' then
+						return
+					else
+						coroutine.resume(co, url)
+					end
 				end)
-			end,
-			webRoot = '${workspaceFolder}/src',
-			useWebView = true,
-			sourceMaps = true,
-			userDataDir = false,
-		},
+			end)
+		end,
+		webRoot = '${workspaceFolder}/src',
+		useWebView = true,
+		sourceMaps = true,
+		userDataDir = false,
 	},
 	{
-		{
-			name = 'Node: Terminal Debug',
-			type = 'js',
-			request = 'launch',
-			cwd = '${workspaceFolder}',
-			console = 'integratedTerminal',
-			skipFiles = { '<node_internals>/**' },
-			sourceMaps = true,
-			outFiles = { '${workspaceFolder}/dist/**/*.js' },
-		},
+		name = 'Node: Terminal Debug',
+		type = 'js',
+		request = 'launch',
+		cwd = '${workspaceFolder}',
+		console = 'integratedTerminal',
+		skipFiles = { '<node_internals>/**' },
+		sourceMaps = true,
+		outFiles = { '${workspaceFolder}/dist/**/*.js' },
 	},
 	{
-		{
-			name = 'Extension Host: Debug',
-			type = 'js',
-			request = 'launch',
-			args = { '--extensionDevelopmentPath=${workspaceFolder}' },
-			cwd = '${workspaceFolder}',
-			runtimeExecutable = vim.fn.exepath('code'),
-			outFiles = { '${workspaceFolder}/out/**/*.js' },
-			sourceMaps = true,
-			protocol = 'inspector',
-		},
+		name = 'Extension Host: Debug',
+		type = 'js',
+		request = 'launch',
+		args = { '--extensionDevelopmentPath=${workspaceFolder}' },
+		cwd = '${workspaceFolder}',
+		runtimeExecutable = vim.fn.exepath('code'),
+		outFiles = { '${workspaceFolder}/out/**/*.js' },
+		sourceMaps = true,
+		protocol = 'inspector',
 	},
 	{
 		name = 'Jest: Debug Tests',
@@ -279,7 +273,6 @@ M.js = {
 		internalConsoleOptions = 'neverOpen',
 	},
 	{
-
 		name = 'Jest: Debug Tests 2',
 		type = 'js',
 		request = 'launch',
