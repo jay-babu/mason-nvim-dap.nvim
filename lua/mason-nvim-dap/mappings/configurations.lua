@@ -117,27 +117,248 @@ M.node2 = {
 
 M.chrome = {
 	{
-		name = 'Chrome: Debug',
+		name = 'Chrome Debugger',
 		type = 'chrome',
-		request = 'attach',
-		program = '${file}',
+		request = 'launch',
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
-		protocol = 'inspector',
-		port = 9222,
+		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
 	},
 }
 
 M.firefox = {
 	{
-		name = 'Firefox: Debug',
+		name = 'Firefox Debugger',
 		type = 'firefox',
 		request = 'launch',
 		reAttach = true,
 		url = 'http://localhost:3000',
 		webRoot = '${workspaceFolder}',
 		firefoxExecutable = vim.fn.exepath('firefox'),
+	},
+}
+
+M.js = {
+	{
+		name = 'Launch Node',
+		type = 'js',
+		request = 'launch',
+		program = '${ file }',
+		cwd = '${workspaceFolder}',
+		sourceMaps = true,
+		rootPath = '${workspaceFolder}',
+		skipFiles = { '<node_internals>/**' },
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
+	{
+		name = 'Attach to Node Process',
+		type = 'js',
+		request = 'attach',
+		processId = require('dap.utils').pick_process,
+		cwd = '${workspaceFolder}',
+		sourceMaps = true,
+	},
+	{
+		name = 'Launch Current File (pwa-node with ts-node)',
+		type = 'js',
+		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		runtimeArgs = { '--loader', 'ts-node/esm' },
+		runtimeExecutable = 'node',
+		args = { '${file}' },
+		sourceMaps = true,
+		protocol = 'inspector',
+		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/**',
+			'!**/node_modules/**',
+		},
+	},
+	{
+		name = 'Launch Test Current File (pwa-node with vitest)',
+		type = 'js',
+		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+		args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
+		autoAttachChildProcesses = true,
+		smartStep = true,
+		console = 'integratedTerminal',
+		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+	},
+	{
+		name = 'Launch Test Current File (pwa-node with deno)',
+		type = 'js',
+		request = 'launch',
+		cwd = vim.fn.getcwd(),
+		runtimeArgs = { 'test', '--inspect-brk', '--allow-all', '${file}' },
+		runtimeExecutable = 'deno',
+		attachSimplePort = 9229,
+	},
+	{
+		name = 'Chrome: Launch && Debug Against localhost',
+		type = 'js',
+		request = 'launch',
+		url = function()
+			local co = coroutine.running()
+			return coroutine.create(function()
+				vim.ui.input({
+					prompt = 'Enter URL: ',
+					default = 'https://localhost:3000',
+				}, function(url)
+					if url == nil or url == '' then
+						return
+					else
+						coroutine.resume(co, url)
+					end
+				end)
+			end)
+		end,
+		webRoot = '${workspaceFolder}',
+		skipFiles = { '<node_internals>/**/*.js' },
+		protocol = 'inspector',
+		sourceMaps = true,
+		userDataDir = false,
+	},
+	{
+		name = 'Edge: Launch && Debug Against localhost',
+		type = 'js',
+		request = 'launch',
+		url = function()
+			local co = coroutine.running()
+			return coroutine.create(function()
+				vim.ui.input({
+					prompt = 'Enter URL: ',
+					default = 'https://localhost:3000',
+				}, function(url)
+					if url == nil or url == '' then
+						return
+					else
+						coroutine.resume(co, url)
+					end
+				end)
+			end)
+		end,
+		webRoot = '${workspaceFolder}/src',
+		useWebView = true,
+		sourceMaps = true,
+		userDataDir = false,
+	},
+	{
+		name = 'Node: Terminal Debug',
+		type = 'js',
+		request = 'launch',
+		cwd = '${workspaceFolder}',
+		console = 'integratedTerminal',
+		skipFiles = { '<node_internals>/**' },
+		sourceMaps = true,
+		outFiles = { '${workspaceFolder}/dist/**/*.js' },
+	},
+	{
+		name = 'Extension Host: Debug',
+		type = 'js',
+		request = 'launch',
+		args = { '--extensionDevelopmentPath=${workspaceFolder}' },
+		cwd = '${workspaceFolder}',
+		runtimeExecutable = vim.fn.exepath('code'),
+		outFiles = { '${workspaceFolder}/out/**/*.js' },
+		sourceMaps = true,
+		protocol = 'inspector',
+	},
+	{
+		name = 'Jest: Debug Tests',
+		type = 'js',
+		request = 'launch',
+		-- trace = true, -- include debugger info
+		runtimeExecutable = 'node',
+		runtimeArgs = {
+			'./node_modules/jest/bin/jest.js',
+			'--runInBand',
+		},
+		rootPath = '${workspaceFolder}',
+		cwd = '${workspaceFolder}',
+		console = 'integratedTerminal',
+		internalConsoleOptions = 'neverOpen',
+	},
+	{
+		name = 'Jest: Debug Tests 2',
+		type = 'js',
+		request = 'launch',
+		program = '${workspaceFolder}/node_modules/jest/bin/jest.js',
+		arg = {
+			'_verbose',
+			'_runInBand',
+			'_forceExit',
+			'_config',
+			'jest-unit.config.json',
+			'${file}',
+		},
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		restart = true,
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
+	{
+		name = 'Mocha: Debug Tests',
+		type = 'js',
+		request = 'launch',
+		-- trace = true, -- include debugger info
+		runtimeExecutable = 'node',
+		runtimeArgs = {
+			'./node_modules/mocha/bin/mocha.js',
+		},
+		rootPath = '${workspaceFolder}',
+		cwd = '${workspaceFolder}',
+		console = 'integratedTerminal',
+		internalConsoleOptions = 'neverOpen',
+	},
+	{
+		name = 'Electron: Debug Main Process',
+		type = 'js',
+		request = 'launch',
+		program = '${workspaceFolder}/node_modules/.bin/electron',
+		args = {
+			'${workspaceFolder}/dist/index.js',
+		},
+		outFiles = {
+			'${workspaceFolder}/dist/*.js',
+		},
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/dist/**/*.js',
+			'${workspaceFolder}/dist/*.js',
+		},
+		rootPath = '${workspaceFolder}',
+		cwd = '${workspaceFolder}',
+		sourceMaps = true,
+		skipFiles = { '<node_internals>/**' },
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
+	{
+		name = 'Electron: Compile & Debug Main Process',
+		type = 'js',
+		request = 'launch',
+		preLaunchTask = 'npm run build-ts',
+		program = '${workspaceFolder}/node_modules/.bin/electron',
+		args = {
+			'${workspaceFolder}/dist/index.js',
+		},
+		outFiles = {
+			'${workspaceFolder}/dist/*.js',
+		},
+		resolveSourceMapLocations = {
+			'${workspaceFolder}/dist/**/*.js',
+			'${workspaceFolder}/dist/*.js',
+		},
+		rootPath = '${workspaceFolder}',
+		cwd = '${workspaceFolder}',
+		sourceMaps = true,
+		skipFiles = { '<node_internals>/**' },
+		protocol = 'inspector',
+		console = 'integratedTerminal',
 	},
 }
 
