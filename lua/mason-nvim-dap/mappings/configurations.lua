@@ -51,6 +51,7 @@ M.bash = {
 		pathPkill = 'pkill',
 		env = {},
 		args = {},
+		terminalKind = 'integrated',
 	},
 }
 
