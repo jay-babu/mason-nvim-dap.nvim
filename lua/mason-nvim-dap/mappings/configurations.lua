@@ -92,6 +92,20 @@ M.codelldb = {
 		args = {},
 		console = 'integratedTerminal',
 	},
+	{
+		name = 'LLDB: Launch (args)',
+		type = 'codelldb',
+		request = 'launch',
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+		args = function()
+			return vim.split(vim.fn.input('Args: '), ' +', { trimempty = true })
+		end,
+		console = 'integratedTerminal',
+	},
 }
 
 M.node2 = {
@@ -198,6 +212,42 @@ M.cppdbg = {
 		miDebuggerServerAddress = 'localhost:1234',
 		miDebuggerPath = vim.fn.exepath('gdb'),
 		cwd = '${workspaceFolder}',
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+	},
+	{
+		name = 'Launch file (args)',
+		type = 'cppdbg',
+		request = 'launch',
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		args = function()
+			return vim.split(vim.fn.input('Args: '), ' +', { trimempty = true })
+		end,
+		stopAtEntry = true,
+	},
+	{
+		name = 'Attach to gdbserver (port)',
+		type = 'cppdbg',
+		request = 'launch',
+		MIMode = 'gdb',
+		miDebuggerServerAddress = function()
+			local uri = vim.fn.input('[host]:port : ')
+			if uri:find('^%d+$') == 1 then
+				uri = 'localhost:' .. uri
+			elseif uri:find(':', nil, true) == 1 then
+				uri = 'localhost' .. uri
+			end
+			return uri
+		end,
+		miDebuggerPath = vim.fn.exepath('gdb'),
+		cwd = '${workspaceFolder}',
+		args = function()
+			return vim.split(vim.fn.input('Args: '), ' +', { trimempty = true })
+		end,
 		program = function()
 			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
 		end,
