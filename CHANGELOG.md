@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.5.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.4.0...v2.5.0) (2025-03-17)
+
+
+### Features
+
+* **cpp:** add codelldb,cppdbg definitions for custom arguments/port ([#151](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/151)) ([444aad7](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/444aad7977ee713a4049e9d1dd9b377967d67a4c))
+* **delve:** Add debug with arguments option to Delve ([#139](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/139)) ([26ea08f](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/26ea08fd5c7028ea54a3347ac139fc916baf1aa9))
+
+
+### Bug Fixes
+
+* **bash:** Update bashdb config ([#144](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/144)) ([0959326](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/0959326afe0ae81812053ebf8be1544f5b9c985b))
+* **php:** xdebug port for PHP, resolves [#140](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/140) ([#141](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/141)) ([70d3223](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/70d32230ecc65e98d353d4eb7019f208bb9193a7))
+
 ## [2.4.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.3.1...v2.4.0) (2024-08-04)
 
 
