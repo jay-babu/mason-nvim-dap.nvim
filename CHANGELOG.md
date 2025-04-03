@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.5.0...v2.5.1) (2025-04-03)
+
+
+### Bug Fixes
+
+* **bashdb:** rely on `share` directory rather than unsafe package path ([#154](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/154)) ([50c6c37](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/50c6c3789a153f88cbfc117df09259ff258acffe))
+
 ## [2.5.0](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.4.0...v2.5.0) (2025-03-17)
 
 
