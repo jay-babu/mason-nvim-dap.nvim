@@ -26,11 +26,20 @@ M.current = M._DEFAULT_SETTINGS
 ---@param opts MasonNvimDapSettings
 function M.set(opts)
 	M.current = vim.tbl_deep_extend('force', M.current, opts)
-	vim.validate({
-		ensure_installed = { M.current.ensure_installed, 'table', true },
-		automatic_installation = { M.current.automatic_installation, { 'boolean', 'table' }, true },
-		handlers = { M.current.handlers, { 'table' }, true },
-	})
+	-- Check if running Neovim 0.11.2+ for new vim.validate syntax
+	if vim.version('0.11.2') then
+		-- New 0.11.2+ syntax
+		vim.validate('ensure_installed', M.current.ensure_installed, 'table', true)
+		vim.validate('automatic_installation', M.current.automatic_installation, { 'boolean', 'table' }, true)
+		vim.validate('handlers', M.current.handlers, 'table', true)
+	else
+		-- Backwards compatible syntax for older versions
+		vim.validate({
+			ensure_installed = { M.current.ensure_installed, 'table', true },
+			automatic_installation = { M.current.automatic_installation, { 'boolean', 'table' }, true },
+			handlers = { M.current.handlers, 'table', true },
+		})
+	end
 end
 
 return M
