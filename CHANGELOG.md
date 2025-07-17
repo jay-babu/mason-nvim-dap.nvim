@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.5.1...v2.5.2) (2025-07-17)
+
+
+### Bug Fixes
+
+* update deprecated vim.validate fn ([#168](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/168)) ([5fcd0df](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/5fcd0dfdcf55d8a1c1a02cccc14ee5d79728a496))
+
 ## [2.5.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.5.0...v2.5.1) (2025-04-03)
 
 
