@@ -27,7 +27,7 @@ M.current = M._DEFAULT_SETTINGS
 function M.set(opts)
 	M.current = vim.tbl_deep_extend('force', M.current, opts)
 	-- Check if running Neovim 0.11.2+ for new vim.validate syntax
-	if vim.version('0.11.2') then
+	if vim.fn.has('nvim-0.11.2') == 1 then
 		-- New 0.11.2+ syntax
 		vim.validate('ensure_installed', M.current.ensure_installed, 'table', true)
 		vim.validate('automatic_installation', M.current.automatic_installation, { 'boolean', 'table' }, true)
