@@ -41,7 +41,10 @@ if
 	require('mason-registry').has_package('bash-debug-adapter')
 	and require('mason-registry').get_package('bash-debug-adapter'):is_installed()
 then
-	BASHDB_DIR = vim.fn.expand('$MASON/share/bashdb')
+	if vim.fn.isdirectory(vim.fn.expand('$MASON/opt/bashdb')) ~= 0
+	then BASHDB_DIR = vim.fn.expand('$MASON/opt/bashdb')
+	else BASHDB_DIR = vim.fn.expand('$MASON/share/bashdb')
+	end
 end
 
 M.bash = {
