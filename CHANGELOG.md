@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.5.2](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.5.1...v2.5.2) (2025-10-17)
+
+
+### Bug Fixes
+
+* **bashdb:** use opt instead of share (fixes [#162](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/162)) ([#164](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/164)) ([c971971](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/c971971f881d1be90252d281f384054d9d53e745))
+* update deprecated vim.validate fn ([#168](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/168)) ([5fcd0df](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/5fcd0dfdcf55d8a1c1a02cccc14ee5d79728a496))
+* use correct fn for version check ([#170](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/170)) ([#172](https://github.com/jay-babu/mason-nvim-dap.nvim/issues/172)) ([86389a3](https://github.com/jay-babu/mason-nvim-dap.nvim/commit/86389a3dd687cfaa647b6f44731e492970034baa))
+
 ## [2.5.1](https://github.com/jay-babu/mason-nvim-dap.nvim/compare/v2.5.0...v2.5.1) (2025-04-03)
 
 
