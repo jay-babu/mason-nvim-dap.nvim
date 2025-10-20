@@ -1,5 +1,8 @@
 `mason-nvim-dap` bridges `mason.nvim` with the `nvim-dap` plugin - making it easier to use both plugins together.
 
+# Looking for a Job
+
+I co-founded a company based in NYC. If you are looking for a job or are interested in learning more, apply! https://www.ycombinator.com/companies/transformity/jobs/TBZpYfY-software-engineer-ii
 
 # Introduction
 
