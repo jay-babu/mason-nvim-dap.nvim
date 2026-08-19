@@ -91,6 +91,9 @@ M.codelldb = {
 		stopOnEntry = false,
 		args = {},
 		console = 'integratedTerminal',
+		sourceLanguages = function()
+			return vim.o.filetype == 'rust' and { 'rust' } or nil
+		end,
 	},
 	{
 		name = 'LLDB: Launch (args)',
@@ -105,6 +108,9 @@ M.codelldb = {
 			return vim.split(vim.fn.input('Args: '), ' +', { trimempty = true })
 		end,
 		console = 'integratedTerminal',
+		sourceLanguages = function()
+			return vim.o.filetype == 'rust' and { 'rust' } or nil
+		end,
 	},
 }
 
